@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from "@angular/router";
 import { MaterializeModule } from 'angular2-materialize';
@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { IndexComponent } from "./index/index.component";
 import { LoginComponent } from "./auth/login.component";
 import { RegistrationComponent } from "./auth/registration.component";
+import {UserSocketService} from "./shared/services/user_socket.service";
 
 @NgModule({
   declarations: [
@@ -27,9 +28,12 @@ import { RegistrationComponent } from "./auth/registration.component";
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    MaterializeModule
+    MaterializeModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    UserSocketService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

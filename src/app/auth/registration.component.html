@@ -1,3 +1,38 @@
 <div>
   <h1>Registration page</h1>
+  <div>
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label>
+          First name: <input formControlName="first_name">
+        </label>
+      </div>
+
+      <div>
+        <label>
+          Last name: <input formControlName="last_name">
+        </label>
+      </div>
+
+      <div>
+        <label>
+          Username: <input formControlName="username">
+        </label>
+      </div>
+
+      <div>
+        <label>
+          Email: <input formControlName="email">
+        </label>
+      </div>
+
+      <div>
+        <label>
+          Password: <input type="password" formControlName="password">
+        </label>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 </div>
