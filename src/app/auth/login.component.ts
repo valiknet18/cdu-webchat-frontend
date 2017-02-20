@@ -21,10 +21,12 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
-
     this.userSocketService.login({
       'user': this.loginForm.value
-    })
+    }).subscribe(function (value) {
+      console.log(value)
+    }, function (error) {
+      console.log(error)
+    });
   }
 }

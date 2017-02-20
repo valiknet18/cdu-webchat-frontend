@@ -6,20 +6,21 @@ export class SocketService {
   constructor(private protocol: string,
               private hostname: string,
               private port: string,
-              private namespace: string = ''
+              private namespace: string = '',
+              private token: string = ''
   ) {}
 
   connect() {
     let host = this.protocol + '//' + this.hostname + ':' + this.port;
 
-    if (this.namespace) {
-      host += this.namespace;
-    }
+    // if (this.namespace) {
+    //   host += this.namespace;
+    // }
 
     this.socket = io.connect(host, {
-      upgrade: false,
-      transports:
-        ['websocket']
+      query: {
+        token: this.token
+      }
     });
   }
 

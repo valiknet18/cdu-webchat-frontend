@@ -28,6 +28,10 @@ export class RegistrationComponent {
 
     this.userSocketService.registration({
       'user': this.registrationForm.value
-    })
+    }).subscribe(function (value) {
+      console.log(value)
+    }, function (error) {
+      console.log(error)
+    });
   }
 }

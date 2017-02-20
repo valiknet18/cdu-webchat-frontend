@@ -9,12 +9,12 @@ export class IndexComponent implements OnInit {
   constructor(private userSocketService: UserSocketService) {}
 
   ngOnInit() {
-    this.userSocketService.getCurrentUser();
-  }
-
-  onLogin() {
-    this.userSocketService.login({
-      hello: 'World'
-    })
+    this.userSocketService
+      .getCurrentUser()
+      .subscribe(function (value) {
+        console.log(value)
+      }, function (error) {
+        console.log(error)
+      });
   }
 }

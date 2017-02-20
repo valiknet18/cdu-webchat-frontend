@@ -1,71 +1,68 @@
-import {Injectable, OnInit} from "@angular/core";
+import {Injectable} from "@angular/core";
 import {server} from "../../../config/server";
-import {SocketService, SocketListeners} from "./socket.service";
+import {SocketService} from "./socket.service";
+import {Observable} from "rxjs";
+
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 @Injectable()
-export class UserSocketService implements SocketListeners {
+export class UserSocketService {
   private socket: SocketService;
 
-  constructor() {
+  constructor(private cookieService: CookieService) {
     this.socket = new SocketService(
       server.protocol,
       server.hostname,
       server.port,
-      server.namespaces.auth
+      server.namespaces.auth,
+      this.cookieService.get('token')
     );
 
     this.socket.connect();
-    this.registerListeners()
-  }
-
-  registerListeners() {
-    this.socket.on('login_failed', (attributes) => this.login_failed(attributes));
-    this.socket.on('login_success', (attributes) => this.login_success(attributes));
-
-
-    this.socket.on('registration_failed', (attributes) => this.registration_failed(attributes));
-    this.socket.on('registration_success', (attributes) => this.registration_success(attributes));
-
-
-    this.socket.on('failed', (attributes) => this.failed(attributes));
-    this.socket.on('success', (attributes) => this.success(attributes));
   }
 
   login(attributes: Object) {
-    console.log("Login emited");
+    let socket = this.socket;
+    let self = this;
+    let observable = new Observable(observer => {
+      socket.emit("login", attributes);
 
-    this.socket.emit("login", attributes);
-  }
+      socket.on('login_failed', (attributes) => observer.error(attributes));
+      socket.on('login_success', (attributes) => {
+        this.cookieService.put('token', attributes['token'], {
+          'path': '*'
+        });
 
-  login_failed(attributes) {
-    console.log(attributes);
-  }
+        observer.next(attributes);
+      });
+    });
 
-  login_success(attributes) {
-    console.log(attributes);
+    return observable;
   }
 
   registration(attributes: Object) {
-    this.socket.emit("registration", attributes)
-  }
+    let socket = this.socket;
 
-  registration_failed(attributes) {
-    console.log(attributes);
-  }
+    let observable = new Observable(observer => {
+      socket.emit("registration", attributes);
 
-  registration_success(attributes) {
-    console.log(attributes);
+      socket.on('registration_failed', (attributes) => observer.error(attributes));
+      socket.on('registration_success', (attributes) => observer.next(attributes));
+    });
+
+    return observable;
   }
 
   getCurrentUser() {
-    this.socket.emit("current_user")
-  }
+    let socket = this.socket;
 
-  failed(attributes) {
-    console.log(attributes);
-  }
+    let observable = new Observable(observer => {
+      socket.emit("current_user");
 
-  success(attributes) {
-    console.log(attributes);
+      socket.on('failed', (attributes) => observer.error(attributes));
+      socket.on('success', (attributes) => observer.next(attributes));
+    });
+
+    return observable;
   }
 }

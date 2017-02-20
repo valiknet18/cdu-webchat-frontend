@@ -2,12 +2,17 @@
   <nav class="deep-purple lighten-1">
     <div class="container nav-wrapper">
       <a routerLink="" routerLinkActive="active" class="brand-logo left">Головна</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <ul id="nav-mobile-not-auth" class="right hide-on-med-and-down" *ngIf="!isAuthorized">
         <li>
           <a routerLink="login" routerLinkActive="active">Авторизація</a>
         </li>
         <li>
           <a routerLink="registration" routerLinkActive="active">Реєстрація</a>
+        </li>
+      </ul>
+      <ul id="nav-mobile-auth" class="right hide-on-med-and-down" *ngIf="isAuthorized">
+        <li>
+          <a>Profile</a>
         </li>
       </ul>
     </div>

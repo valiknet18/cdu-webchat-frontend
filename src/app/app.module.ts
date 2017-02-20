@@ -14,6 +14,8 @@ import { LoginComponent } from "./auth/login.component";
 import { RegistrationComponent } from "./auth/registration.component";
 import {UserSocketService} from "./shared/services/user_socket.service";
 
+import { CookieService } from 'angular2-cookie/services/cookies.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,8 @@ import {UserSocketService} from "./shared/services/user_socket.service";
     ReactiveFormsModule
   ],
   providers: [
-    UserSocketService
+    UserSocketService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })
