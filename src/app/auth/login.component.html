@@ -2,6 +2,16 @@
   <h1>Login page</h1>
 
   <div>
+    <div class="error-message" *ngIf="errorMessage !== ''">
+      {{ errorMessage }}
+    </div>
+    <div class="success-message" *ngIf="successMessage !== ''">
+      {{ successMessage }}
+    </div>
+
+    <div *ngIf="user">
+      {{ user | json }}
+    </div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div>
         <label>

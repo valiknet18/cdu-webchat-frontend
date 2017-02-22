@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {UserSocketService} from "../shared/services/user_socket.service";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { UserSocketService } from "../shared/services/user_socket.service";
+import { User } from "../shared/models/user";
 
 @Component({
   selector: 'login-page',
@@ -8,6 +9,9 @@ import {UserSocketService} from "../shared/services/user_socket.service";
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  errorMessage: string;
+  successMessage: string;
+  user: User;
 
   constructor(private fb: FormBuilder, private userSocketService: UserSocketService) {
       this.createForm();
@@ -21,12 +25,26 @@ export class LoginComponent {
   }
 
   onSubmit() {
+    let self = this;
+
     this.userSocketService.login({
       'user': this.loginForm.value
-    }).subscribe(function (value) {
-      console.log(value)
-    }, function (error) {
-      console.log(error)
-    });
+    }).subscribe(
+        (attributes) => {
+          self.errorMessage = '';
+          self.successMessage = '';
+
+          if ('error' in attributes) {
+            self.errorMessage = attributes['error'];
+          }
+
+          if ('success' in attributes) {
+            self.successMessage = attributes['success'];
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+    );
   }
 }

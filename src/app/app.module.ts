@@ -15,6 +15,7 @@ import { RegistrationComponent } from "./auth/registration.component";
 import {UserSocketService} from "./shared/services/user_socket.service";
 
 import { CookieService } from 'angular2-cookie/services/cookies.service';
+import {UserService} from "./shared/services/user.service";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
   ],
   providers: [
     UserSocketService,
-    CookieService
+    CookieService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

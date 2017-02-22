@@ -8,6 +8,8 @@ import {UserSocketService} from "../shared/services/user_socket.service";
 })
 export class RegistrationComponent {
   registrationForm: FormGroup;
+  errorMessage: string;
+  successMessage: string;
 
   constructor(private fb: FormBuilder, private userSocketService: UserSocketService) {
     this.createForm()
@@ -24,14 +26,26 @@ export class RegistrationComponent {
   }
 
   onSubmit() {
-    console.log(this.registrationForm.value);
+    let self = this;
 
     this.userSocketService.registration({
       'user': this.registrationForm.value
-    }).subscribe(function (value) {
-      console.log(value)
-    }, function (error) {
-      console.log(error)
-    });
+    }).subscribe(
+      (attributes) => {
+        self.errorMessage = '';
+        self.successMessage = '';
+
+        if ('error' in attributes) {
+          self.errorMessage = attributes['error'];
+        }
+
+        if ('success' in attributes) {
+          self.successMessage = attributes['success'];
+        }
+      },
+      (error) => {
+        console.log(error)
+      }
+    );
   }
 }

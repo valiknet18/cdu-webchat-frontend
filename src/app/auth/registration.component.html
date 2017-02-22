@@ -1,5 +1,11 @@
 <div>
   <h1>Registration page</h1>
+  <div *ngIf="successMessage">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
   <div>
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <div>
