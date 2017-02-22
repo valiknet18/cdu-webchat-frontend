@@ -17,16 +17,33 @@
         <label>
           Email: <input formControlName="email">
         </label>
+
+        <div *ngIf="!loginForm.controls.email.valid" class="alert alert-danger">
+          <p *ngIf="loginForm.controls.email.errors.required">
+            This field is required
+          </p>
+
+          <p *ngIf="loginForm.controls.email.errors.pattern">
+            Email has incorrect format
+          </p>
+        </div>
       </div>
 
       <div>
         <label>
           password: <input type="password" formControlName="password">
         </label>
+
+
+        <div *ngIf="!loginForm.controls.password.valid" class="alert alert-danger">
+          <p *ngIf="loginForm.controls.password.errors.required">
+            This field is required
+          </p>
+        </div>
       </div>
 
       <div>
-        <button type="submit">Submit</button>
+        <button type="submit" [disabled]="!loginForm.valid">Submit</button>
       </div>
     </form>
   </div>

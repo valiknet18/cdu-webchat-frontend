@@ -12,33 +12,67 @@
         <label>
           First name: <input formControlName="first_name">
         </label>
+
+        <div *ngIf="!registrationForm.controls.first_name.valid" class="alert alert-danger">
+          <p *ngIf="registrationForm.controls.first_name.errors.required">
+            This field is required
+          </p>
+        </div>
       </div>
 
       <div>
         <label>
           Last name: <input formControlName="last_name">
         </label>
+
+        <div *ngIf="!registrationForm.controls.last_name.valid" class="alert alert-danger">
+          <p *ngIf="registrationForm.controls.last_name.errors.required">
+            This field is required
+          </p>
+        </div>
       </div>
 
       <div>
         <label>
           Username: <input formControlName="username">
         </label>
+
+        <div *ngIf="!registrationForm.controls.username.valid" class="alert alert-danger">
+          <p *ngIf="registrationForm.controls.username.errors.required">
+            This field is required
+          </p>
+        </div>
       </div>
 
       <div>
         <label>
           Email: <input formControlName="email">
         </label>
+
+        <div *ngIf="!registrationForm.controls.email.valid" class="alert alert-danger">
+          <p *ngIf="registrationForm.controls.email.errors.required">
+            This field is required
+          </p>
+
+          <p *ngIf="registrationForm.controls.email.errors.pattern">
+            Email has incorrect format
+          </p>
+        </div>
       </div>
 
       <div>
         <label>
           Password: <input type="password" formControlName="password">
         </label>
+
+        <div *ngIf="!registrationForm.controls.password.valid" class="alert alert-danger">
+          <p *ngIf="registrationForm.controls.password.errors.required">
+            This field is required
+          </p>
+        </div>
       </div>
 
-      <button type="submit">Submit</button>
+      <button type="submit" [disabled]="!registrationForm.valid">Submit</button>
     </form>
   </div>
 </div>

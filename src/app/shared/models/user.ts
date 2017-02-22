@@ -5,4 +5,5 @@ export class User {
   email: string;
   is_super_admin: boolean;
   role: string;
+  password?: string;
 }
