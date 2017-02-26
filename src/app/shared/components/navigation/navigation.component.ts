@@ -13,6 +13,7 @@ import {UserService} from "../../services/user.service";
 })
 export class NavigationComponent implements OnInit {
   isAuthorized: boolean = false;
+  user: User = null;
 
   constructor(private userSocketService: UserSocketService, private userService: UserService) {}
 
@@ -29,6 +30,7 @@ export class NavigationComponent implements OnInit {
         }
 
         self.isAuthorized = true;
+        self.user = user;
 
         console.log(user)
       }, function (error) {

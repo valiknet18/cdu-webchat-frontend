@@ -16,6 +16,8 @@ import {UserSocketService} from "./shared/services/user_socket.service";
 
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import {UserService} from "./shared/services/user.service";
+import {ChatModule} from "./chat/chat.module";
+import {SocketService} from "./shared/services/socket.service";
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import {UserService} from "./shared/services/user.service";
   providers: [
     UserSocketService,
     CookieService,
-    UserService
+    UserService,
+    SocketService
   ],
   bootstrap: [AppComponent]
 })

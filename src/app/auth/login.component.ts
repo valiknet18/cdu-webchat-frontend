@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { UserSocketService } from "../shared/services/user_socket.service";
 import { User } from "../shared/models/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'login-page',
@@ -13,8 +14,10 @@ export class LoginComponent {
   successMessage: string;
   user: User;
 
-  constructor(private fb: FormBuilder, private userSocketService: UserSocketService) {
+  constructor(private fb: FormBuilder, private userSocketService: UserSocketService, private router: Router) {
       this.createForm();
+
+      console.log(2);
   }
 
   private createForm() {
@@ -45,6 +48,10 @@ export class LoginComponent {
 
           if ('success' in attributes) {
             self.successMessage = attributes['success'];
+
+            setTimeout(function () {
+              self.router.navigate(['/'])
+            }, 2000)
           }
         },
         (error) => {

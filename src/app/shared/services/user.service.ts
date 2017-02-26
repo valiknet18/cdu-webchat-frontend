@@ -7,7 +7,9 @@ import {CookieService} from "angular2-cookie/services/cookies.service";
 export class UserService {
   private user = new BehaviorSubject<User>(null);
 
-  constructor(private cookieService: CookieService) {}
+  constructor(private cookieService: CookieService) {
+    console.log('in user');
+  }
 
   getUser() {
     return this.user;
