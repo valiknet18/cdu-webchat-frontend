@@ -1,5 +1,5 @@
 <div>
-  <h1>Login page</h1>
+  <h1>Форма авторизації</h1>
 
   <div>
     <div class="error-message" *ngIf="errorMessage !== ''">
@@ -18,26 +18,26 @@
           Email: <input formControlName="email">
         </label>
 
-        <div *ngIf="!loginForm.controls.email.valid" class="alert alert-danger">
+        <div *ngIf="!loginForm.controls.email.valid && loginForm.controls.email.dirty" class="alert alert-danger">
           <p *ngIf="loginForm.controls.email.errors.required">
-            This field is required
+            Це поле обов’язкове до заповнення
           </p>
 
           <p *ngIf="loginForm.controls.email.errors.pattern">
-            Email has incorrect format
+            Email має не вірний формат
           </p>
         </div>
       </div>
 
       <div>
         <label>
-          password: <input type="password" formControlName="password">
+          Пароль: <input type="password" formControlName="password">
         </label>
 
 
-        <div *ngIf="!loginForm.controls.password.valid" class="alert alert-danger">
+        <div *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.dirty" class="alert alert-danger">
           <p *ngIf="loginForm.controls.password.errors.required">
-            This field is required
+            Це поле обов’язкове до заповнення
           </p>
         </div>
       </div>

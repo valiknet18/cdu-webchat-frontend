@@ -1,16 +1,16 @@
 import {NgModule} from "@angular/core";
 import {RouterModule} from "@angular/router";
 import {routes} from "./chat.routes";
-import {ChatComponent} from "./chat.component";
+import {ChatComponent, EmptyChatComponent} from "./chat.component";
 import {MessagesComponent} from "./messages/messages.component";
 import {MessageComponent} from "./messages/message.component";
-import {RoomsComponent} from "./channels/rooms.component";
-import {RoomComponent} from "./channels/room.component";
-import {RoomService} from "../shared/services/room.service";
-import {RoomSocketService} from "../shared/services/room_socket.service";
-import {UserService} from "../shared/services/user.service";
-import {SocketService} from "../shared/services/socket.service";
+import {RoomsComponent} from "./rooms/rooms.component";
+import {RoomComponent} from "./rooms/room.component";
 import { CommonModule } from '@angular/common';
+import {MembersComponent} from "./members/members.component";
+import {MemberComponent} from "./members/member.component";
+import {MessageFormComponent} from "./message-form/message-form.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -18,21 +18,21 @@ import { CommonModule } from '@angular/common';
     MessagesComponent,
     MessageComponent,
     RoomsComponent,
-    RoomComponent
+    RoomComponent,
+    MembersComponent,
+    MemberComponent,
+    MessageFormComponent,
+    EmptyChatComponent
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
   ],
   exports: [
-    RouterModule
+    RouterModule,
   ],
-  providers: [
-    RoomService,
-    RoomSocketService,
-    UserService,
-    SocketService
-  ],
+  providers: [],
   bootstrap: []
 })
 export class ChatModule {}

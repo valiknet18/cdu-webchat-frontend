@@ -18,6 +18,7 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
 import {UserService} from "./shared/services/user.service";
 import {ChatModule} from "./chat/chat.module";
 import {SocketService} from "./shared/services/socket.service";
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -34,13 +35,14 @@ import {SocketService} from "./shared/services/socket.service";
     HttpModule,
     RouterModule.forRoot(routes),
     MaterializeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
+  ],
+  exports: [
+    SharedModule
   ],
   providers: [
-    UserSocketService,
-    CookieService,
-    UserService,
-    SocketService
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

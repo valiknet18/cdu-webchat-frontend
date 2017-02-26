@@ -1,30 +1,43 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, OnDestroy} from "@angular/core";
 import {Room} from "../shared/models/room";
 import {Message} from "../shared/models/message";
 import {UserService} from "../shared/services/user.service";
 import {User} from "../shared/models/user";
 import {RoomSocketService} from "../shared/services/room_socket.service";
 import {RoomService} from "../shared/services/room.service";
+import {Router, ActivatedRoute} from "@angular/router";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'chat',
   templateUrl: './chat.component.html'
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, OnDestroy {
   rooms: Room[];
   messages: Message[];
+  members: User[];
+  room: Room;
+
+  private sub: any;
 
   constructor(
     private userService: UserService,
     private roomSocketService: RoomSocketService,
-    private roomService: RoomService
+    private roomService: RoomService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
 
   }
 
   ngOnInit() {
+    this.getCurrentRoom();
     this.getRooms();
     this.getMessages();
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   getMessages() {
@@ -36,6 +49,8 @@ export class ChatComponent implements OnInit {
           return false;
         }
 
+        self.room = room;
+        self.members = room.members;
         self.messages = room.messages;
       }
     );
@@ -51,8 +66,60 @@ export class ChatComponent implements OnInit {
         }
 
         self.rooms = user.rooms;
+      }
+    );
+  }
 
-        console.log(self.rooms);
+  getCurrentRoom() {
+    let self = this;
+
+    this.sub = this.route.params.subscribe(params => {
+      let currentRoomId = +params["id"];
+
+      self.roomSocketService.selectRoom(currentRoomId);
+      self.roomService.getCurrentRoom().next(currentRoomId);
+    });
+  }
+
+  onSelectRoom(room_id: number) {
+    this.router.navigate(['/chat', room_id]);
+    this.roomSocketService.selectRoom(room_id);
+  }
+
+  onSendMessage(messageForm: Object) {
+    messageForm['id'] = this.room.id;
+
+    this.roomSocketService.sendMessage(messageForm);
+  }
+}
+
+@Component({
+  selector: 'empty-chat',
+  templateUrl: './empty-chat.component.html'
+})
+export class EmptyChatComponent implements OnInit {
+  rooms: Room[];
+
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) {
+
+  }
+  ngOnInit() {
+    this.getRooms();
+  }
+
+  getRooms() {
+    let self = this;
+
+    this.userService.getUser().subscribe(
+      (user?: User) => {
+        if (!user) {
+          return false;
+        }
+
+        self.rooms = user.rooms;
 
         if (!user.last_selected_room) {
           return false;
@@ -64,6 +131,6 @@ export class ChatComponent implements OnInit {
   }
 
   onSelectRoom(room_id: number) {
-    this.roomSocketService.selectRoom(room_id);
+    this.router.navigate(['/chat', room_id]);
   }
 }

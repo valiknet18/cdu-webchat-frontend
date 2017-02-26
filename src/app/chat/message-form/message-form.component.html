@@ -1,0 +1,8 @@
+<form [formGroup]="messageForm" (ngSubmit)="onSend()">
+  <div class="col l8 s8">
+    <textarea formControlName="message"></textarea>
+  </div>
+  <div class="col l4 s8">
+    <button type="submit">Send</button>
+  </div>
+</form>

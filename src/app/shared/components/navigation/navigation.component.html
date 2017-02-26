@@ -12,16 +12,16 @@
       </ul>
       <ul id="nav-mobile-auth" class="right hide-on-med-and-down" *ngIf="isAuthorized">
         <li>
-          <a>Profile</a>
+          <a>Профайл</a>
         </li>
         <li *ngIf="!user.last_selected_room" >
-          <a [routerLink]="['/chat']" routerLinkActive="active">Chat</a>
+          <a [routerLink]="['/chat']" routerLinkActive="active">Чат</a>
         </li>
         <li *ngIf="user.last_selected_room" >
-          <a [routerLink]="['/chat', user.last_selected_room]" routerLinkActive="active">Chat</a>
+          <a [routerLink]="['/chat', user.last_selected_room]" routerLinkActive="active">Чат</a>
         </li>
         <li (click)="onLogout()">
-          <a>Logout</a>
+          <a>Вихід</a>
         </li>
       </ul>
     </div>

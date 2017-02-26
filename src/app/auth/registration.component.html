@@ -1,5 +1,5 @@
 <div>
-  <h1>Registration page</h1>
+  <h1>Форма реєстрації</h1>
   <div *ngIf="successMessage">
     {{ successMessage }}
   </div>
@@ -10,36 +10,36 @@
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <div>
         <label>
-          First name: <input formControlName="first_name">
+          Ім’я: <input formControlName="first_name">
         </label>
 
-        <div *ngIf="!registrationForm.controls.first_name.valid" class="alert alert-danger">
+        <div *ngIf="!registrationForm.controls.first_name.valid && registrationForm.controls.first_name.dirty" class="alert alert-danger">
           <p *ngIf="registrationForm.controls.first_name.errors.required">
-            This field is required
+            Це поле обов’язкове до заповнення
           </p>
         </div>
       </div>
 
       <div>
         <label>
-          Last name: <input formControlName="last_name">
+          Прізвище: <input formControlName="last_name">
         </label>
 
-        <div *ngIf="!registrationForm.controls.last_name.valid" class="alert alert-danger">
+        <div *ngIf="!registrationForm.controls.last_name.valid && registrationForm.controls.last_name.dirty" class="alert alert-danger">
           <p *ngIf="registrationForm.controls.last_name.errors.required">
-            This field is required
+            Це поле обов’язково до заповнення
           </p>
         </div>
       </div>
 
       <div>
         <label>
-          Username: <input formControlName="username">
+          Нікнейм: <input formControlName="username">
         </label>
 
-        <div *ngIf="!registrationForm.controls.username.valid" class="alert alert-danger">
+        <div *ngIf="!registrationForm.controls.username.valid && registrationForm.controls.username.dirty" class="alert alert-danger">
           <p *ngIf="registrationForm.controls.username.errors.required">
-            This field is required
+            Це поле обов’язкове до заповнення
           </p>
         </div>
       </div>
@@ -49,25 +49,25 @@
           Email: <input formControlName="email">
         </label>
 
-        <div *ngIf="!registrationForm.controls.email.valid" class="alert alert-danger">
+        <div *ngIf="!registrationForm.controls.email.valid && registrationForm.controls.email.dirty" class="alert alert-danger">
           <p *ngIf="registrationForm.controls.email.errors.required">
-            This field is required
+            Це поле обов’язкове до заповнення
           </p>
 
           <p *ngIf="registrationForm.controls.email.errors.pattern">
-            Email has incorrect format
+            Email має не вірний формат
           </p>
         </div>
       </div>
 
       <div>
         <label>
-          Password: <input type="password" formControlName="password">
+          Пароль: <input type="password" formControlName="password">
         </label>
 
-        <div *ngIf="!registrationForm.controls.password.valid" class="alert alert-danger">
+        <div *ngIf="!registrationForm.controls.password.valid && registrationForm.controls.password.dirty" class="alert alert-danger">
           <p *ngIf="registrationForm.controls.password.errors.required">
-            This field is required
+            Це поле обов’язкове до заповнення
           </p>
         </div>
       </div>

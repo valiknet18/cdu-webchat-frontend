@@ -1,4 +1,5 @@
 import {Message} from "./message";
+import {User} from "./user";
 
 export class Room {
   id: number;
@@ -6,4 +7,5 @@ export class Room {
   created_by: number;
   created_at: string;
   messages: Message[];
+  members: User[];
 }

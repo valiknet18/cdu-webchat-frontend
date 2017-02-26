@@ -19,11 +19,25 @@ export class RoomSocketService implements SocketListeners {
 
       self.roomService.getRoom().next(room);
     });
+
+    this.socketService.on('receive_messages', function (attributes) {
+      let room = Object.assign(new Room(), attributes['room']);
+
+      let last_room = self.roomService.getCurrentRoom().getValue();
+
+      if (room.id == last_room) {
+        self.roomService.getRoom().next(room);
+      }
+    })
   }
 
   selectRoom(room_id: number) {
     this.socketService.emit('select_room', {
       id: room_id
     });
+  }
+
+  sendMessage(message: Object) {
+    this.socketService.emit('send_message_to_room', message);
   }
 }
