@@ -19,6 +19,8 @@ import {UserService} from "./shared/services/user.service";
 import {ChatModule} from "./chat/chat.module";
 import {SocketService} from "./shared/services/socket.service";
 import {SharedModule} from "./shared/shared.module";
+import {MainComponent} from "./shared/layouts/main/main.component";
+import {ChatComponent} from "./shared/layouts/chat/chat.component";
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import {SharedModule} from "./shared/shared.module";
     IndexComponent,
     LoginComponent,
     RegistrationComponent,
-    FooterComponent
+    FooterComponent,
+    MainComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

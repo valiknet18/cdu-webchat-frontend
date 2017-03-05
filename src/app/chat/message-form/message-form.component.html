@@ -1,8 +1,19 @@
-<form [formGroup]="messageForm" (ngSubmit)="onSend()">
-  <div class="col l8 s8">
-    <textarea formControlName="message"></textarea>
+<div class="panel-footer">
+  <div class="input-group">
+
+    <form [formGroup]="messageForm" (ngSubmit)="onSend()">
+
+      <div id="block1">
+        <input type="text" class="form-control" formControlName="message" placeholder="Введіть повідомлення"/>
+      </div>
+      <div id="block2">
+        <button class="btn btn-info " type="submit">
+          <i class="material-icons">comment</i>
+        </button>
+      </div>
+      <span class="input-group-btn">
+                              </span>
+    </form>
+
   </div>
-  <div class="col l4 s8">
-    <button type="submit">Send</button>
-  </div>
-</form>
+</div>

@@ -1,11 +1,7 @@
-<div>
-  <h4>Повідомлення:</h4>
+<ul class="media-list">
+  <message *ngFor="let message of messages" [message]="message"></message>
+</ul>
 
-  <ul>
-    <message *ngFor="let message of messages" [message]="message"></message>
-  </ul>
-
-  <div *ngIf="messages?.length < 1">
-    <p>В цьому каналі ще немає ні одного повідомлення</p>
-  </div>
+<div *ngIf="messages?.length < 1">
+  <p>В цьому каналі ще немає ні одного повідомлення</p>
 </div>

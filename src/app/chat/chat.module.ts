@@ -11,6 +11,7 @@ import {MembersComponent} from "./members/members.component";
 import {MemberComponent} from "./members/member.component";
 import {MessageFormComponent} from "./message-form/message-form.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MaterializeModule} from "angular2-materialize";
 
 @NgModule({
   declarations: [
@@ -27,12 +28,15 @@ import {ReactiveFormsModule} from "@angular/forms";
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    MaterializeModule,
     RouterModule.forChild(routes),
   ],
   exports: [
     RouterModule,
   ],
   providers: [],
-  bootstrap: []
+  bootstrap: [
+    ChatComponent
+  ]
 })
 export class ChatModule {}

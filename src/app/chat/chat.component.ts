@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from "@angular/core";
+import {Component, OnInit, OnDestroy, EventEmitter} from "@angular/core";
 import {Room} from "../shared/models/room";
 import {Message} from "../shared/models/message";
 import {UserService} from "../shared/services/user.service";
@@ -7,16 +7,21 @@ import {RoomSocketService} from "../shared/services/room_socket.service";
 import {RoomService} from "../shared/services/room.service";
 import {Router, ActivatedRoute} from "@angular/router";
 import {BehaviorSubject} from "rxjs";
+import {MaterializeAction} from "angular2-materialize";
 
 @Component({
   selector: 'chat',
-  templateUrl: './chat.component.html'
+  templateUrl: './chat.component.html',
+  styleUrls: [
+    'chat.component.scss'
+  ]
 })
 export class ChatComponent implements OnInit, OnDestroy {
   rooms: Room[];
   messages: Message[];
   members: User[];
   room: Room;
+  roomsModal = new EventEmitter<string|MaterializeAction>();
 
   private sub: any;
 
@@ -84,12 +89,18 @@ export class ChatComponent implements OnInit, OnDestroy {
   onSelectRoom(room_id: number) {
     this.router.navigate(['/chat', room_id]);
     this.roomSocketService.selectRoom(room_id);
+
+    this.roomsModal.emit({action:"modal",params:['close']});
   }
 
   onSendMessage(messageForm: Object) {
     messageForm['id'] = this.room.id;
 
     this.roomSocketService.sendMessage(messageForm);
+  }
+
+  openRoomsModal() {
+    this.roomsModal.emit({action:"modal",params:['open']});
   }
 }
 
