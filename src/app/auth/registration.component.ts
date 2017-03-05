@@ -5,7 +5,10 @@ import {User} from "../shared/models/user";
 
 @Component({
   selector: 'registration-page',
-  templateUrl: './registration.component.html'
+  templateUrl: './registration.component.html',
+  styleUrls: [
+    'registration.component.scss'
+  ]
 })
 export class RegistrationComponent {
   registrationForm: FormGroup;

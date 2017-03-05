@@ -6,7 +6,10 @@ import {Router} from "@angular/router";
 
 @Component({
   selector: 'login-page',
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  styleUrls: [
+    'login.component.scss'
+  ]
 })
 export class LoginComponent {
   loginForm: FormGroup;

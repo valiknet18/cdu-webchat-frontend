@@ -26,7 +26,7 @@ export class UserSocketService implements SocketListeners {
 
     this.socketService.on('registration_failed', (attributes) => {
       self.authStatusSubject.next({
-        'error': 'Registration failed'
+        'error': 'Під час реєстрації сталася помилка'
       });
 
       console.log(attributes['error']);
@@ -38,7 +38,7 @@ export class UserSocketService implements SocketListeners {
 
       self.userService.getUser().next(user);
       self.authStatusSubject.next({
-        'success': 'User successful registered'
+        'success': 'Користувач успішно зареєстрований'
       });
     });
 
@@ -52,7 +52,7 @@ export class UserSocketService implements SocketListeners {
 
       self.userService.getUser().next(user);
       self.authStatusSubject.next({
-        'success': 'User successful authorized'
+        'success': 'Користувач успішно авторизований'
       });
     });
 
