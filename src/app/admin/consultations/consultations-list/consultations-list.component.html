@@ -1,0 +1,47 @@
+<div class="row block-wrapper">
+  <div class="col s12 m12">
+    <nav>
+      <div class="nav-wrapper teal lighten-2">
+        <div class="col s12">
+          <a href="#!" class="breadcrumb">Адміністративна зона</a>
+          <a href="#!" class="breadcrumb">Список консультацій</a>
+        </div>
+      </div>
+    </nav>
+    <div class="card-panel">
+      <div class="main-title">
+        <h3>Список груп</h3>
+      </div>
+      <div class="search-area">
+        <form class="col s12 search-consultation" ngNoForm>
+          <div class="row search-form">
+            <div class="input-field col s8">
+              <i class="material-icons prefix">search</i>
+              <input id="search" type="text" (keyup)="onFilterConsultation(filteredValue)" [(ngModel)]="filteredValue">
+              <label for="search">Пошук</label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="users-list">
+        <table class="list-of-elements">
+          <thead>
+          <tr>
+            <th>Назва</th>
+            <th>Дата</th>
+            <th>Викладач</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let consultation of filteredConsultations">
+            <td>{{ consultation.name }}</td>
+            <td>{{ consultation.date }}</td>
+            <td>{{ consultation.teacher }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
