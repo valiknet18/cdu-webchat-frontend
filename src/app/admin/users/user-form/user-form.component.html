@@ -1,0 +1,52 @@
+<div class="row">
+  <form class="col s12" ngNoForm>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="first-name" type="text" class="validate">
+        <label for="first-name" class="">Ім’я: </label>
+      </div>
+      <div class="input-field col s6">
+        <input id="last-name" type="text" class="validate">
+        <label for="last-name">Прізвище: </label>
+      </div>
+      <div class="input-field col s6">
+        <input id="nik" type="text" class="validate">
+        <label for="nik">Нікнейм: </label>
+      </div>
+      <div class="input-field col s6">
+        <input id="email" type="text" class="validate">
+        <label for="email">Email: </label>
+      </div>
+      <div class="input-field col s6">
+        <input id="password1" type="text" class="validate">
+        <label for="password1">Поточний пароль: </label>
+      </div>
+      <div class="input-field col s6">
+        <input id="password2" type="text" class="validate">
+        <label for="password2">Новий пароль: </label>
+      </div>
+      <div class="input-field col s6">
+        <input id="password3" type="text" class="validate">
+        <label for="password3">Повторіть новий пароль: </label>
+      </div>
+      <div class="input-field col s6">
+        <select materialize="material_select" class="role" [(ngModel)]="selectedRole">
+          <option value="" disabled selected>Виберіть потрібну роль</option>
+          <option value="student">Студент</option>
+          <option value="teacher">Викладач</option>
+          <option value="admin">Адміністратор</option>
+        </select>
+      </div>
+
+      <div class="input-field col s6" *ngIf="selectedRole == 'student'">
+        <select materialize="material_select" class="group">
+          <option value="" disabled selected>Виберіть потрібну групу</option>
+          <option value="ke-12">КЕ-12</option>
+          <option value="ki-12">КІ-12</option>
+          <option value="ks-12">КС-12</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="waves-effect waves-light btn">Зберегти</button>
+  </form>
+</div>

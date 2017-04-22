@@ -1,0 +1,15 @@
+@import "../../shared/styles/shared";
+
+.small-avatar {
+  max-width: 80px;
+}
+
+.search-form {
+  display: flex;
+
+  &> div {
+    margin: 5px auto;
+  }
+}
+
+

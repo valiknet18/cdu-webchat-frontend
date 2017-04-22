@@ -1,0 +1,66 @@
+<div class="row block-wrapper">
+  <div class="col s12 m12">
+    <nav>
+      <div class="nav-wrapper teal lighten-2">
+        <div class="col s12">
+          <a href="#!" class="breadcrumb">Адміністративна зона</a>
+          <a href="#!" class="breadcrumb">Список користувачів</a>
+        </div>
+      </div>
+    </nav>
+    <div class="card-panel">
+      <div class="main-title">
+        <h3>Список користувачів</h3>
+      </div>
+      <div class="search-area">
+        <form class="col s12 search-consultation" ngNoForm>
+          <div class="row search-form">
+            <div class="input-field col s8">
+              <i class="material-icons prefix">search</i>
+              <input id="search" type="text" (keyup)="onFilterUsers(filteredValue)" [(ngModel)]="filteredValue">
+              <label for="search">Пошук</label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="users-list">
+        <table class="list-of-elements">
+          <thead>
+          <tr>
+            <th></th>
+            <th>Прізвище</th>
+            <th>Ім'я</th>
+            <th>Юзернейм</th>
+            <th>Email</th>
+            <th>Роль</th>
+            <th></th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let user of filteredUsers">
+            <td>
+              <img src="{{ user.avatar }}" class="small-avatar">
+            </td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+              <i materialize="tooltip" class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Редагувати" routerLink="/admin/users/item/edit">edit</i>
+              <i materialize="tooltip" class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Видалити">delete</i>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large waves-effect waves-light teal" routerLink="/admin/users/create">
+    <i class="large material-icons">add</i>
+  </a>
+</div>

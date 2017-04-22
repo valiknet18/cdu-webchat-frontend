@@ -1,5 +1,5 @@
 <header>
-  <nav class="light-blue darken-3">
+  <nav class="teal darken-3">
     <div class="container nav-wrapper">
       <a routerLink="" routerLinkActive="active" class="brand-logo left">Головна</a>
       <ul id="nav-mobile-not-auth" class="right hide-on-med-and-down" *ngIf="!isAuthorized">
@@ -12,14 +12,17 @@
       </ul>
       <ul id="nav-mobile-auth" class="right hide-on-med-and-down" *ngIf="isAuthorized">
         <li>
+          <a href="" routerLink="/admin">Адмінка</a>
+        </li>
+        <li>
           <a>Профайл</a>
         </li>
-        <li *ngIf="!user.last_selected_room" >
-          <a [routerLink]="['/chat']" routerLinkActive="active">Чат</a>
-        </li>
-        <li *ngIf="user.last_selected_room" >
-          <a [routerLink]="['/chat', user.last_selected_room]" routerLinkActive="active">Чат</a>
-        </li>
+        <!--<li *ngIf="!user.last_selected_room" >-->
+          <!--<a [routerLink]="['/chat']" routerLinkActive="active">Чат</a>-->
+        <!--</li>-->
+        <!--<li *ngIf="user.last_selected_room" >-->
+          <!--<a [routerLink]="['/chat', user.last_selected_room]" routerLinkActive="active">Чат</a>-->
+        <!--</li>-->
         <li (click)="onLogout()">
           <a>Вихід</a>
         </li>

@@ -8,23 +8,23 @@ import {UserService} from "../../services/user.service";
   selector: 'main-navigation',
   templateUrl: './navigation.component.html',
   styles: [
-    'navigation.component.scss'
+    './navigation.component.scss'
   ]
 })
 export class NavigationComponent implements OnInit {
-  isAuthorized: boolean = false;
+  isAuthorized: Boolean = true;
   user: User = null;
 
   constructor(private userSocketService: UserSocketService, private userService: UserService) {}
 
   ngOnInit() {
-    let self = this;
+    const self = this;
 
     this.userSocketService
       .getCurrentUser()
       .subscribe(function (user?: User) {
         if (!user) {
-          self.isAuthorized = false;
+          self.isAuthorized = true;
 
           return false;
         }
@@ -32,9 +32,9 @@ export class NavigationComponent implements OnInit {
         self.isAuthorized = true;
         self.user = user;
 
-        console.log(user)
+        console.log(user);
       }, function (error) {
-        console.log(error)
+        console.log(error);
       });
   }
 

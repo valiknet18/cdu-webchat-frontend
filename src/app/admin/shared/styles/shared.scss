@@ -1,0 +1,21 @@
+.main-title {
+  text-align: center;
+}
+
+.block-wrapper {
+  margin-top: 20px;
+}
+
+.search-form {
+  display: flex;
+
+  &> div {
+    margin: 5px auto;
+  }
+}
+
+.list-of-elements {
+  i {
+    cursor: pointer;
+  }
+}
