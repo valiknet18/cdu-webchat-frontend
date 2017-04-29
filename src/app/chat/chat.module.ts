@@ -10,8 +10,11 @@ import { CommonModule } from '@angular/common';
 import {MembersComponent} from "./members/members.component";
 import {MemberComponent} from "./members/member.component";
 import {MessageFormComponent} from "./message-form/message-form.component";
-import {ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {MaterializeModule} from "angular2-materialize";
+import { JoinToRoomFormComponent } from './join-to-room-form/join-to-room-form.component';
+import { CreateRoomFormComponent } from './create-room-form/create-room-form.component';
+import { InviteUsersFormComponent } from './invite-users-form/invite-users-form.component';
 
 @NgModule({
   declarations: [
@@ -23,10 +26,14 @@ import {MaterializeModule} from "angular2-materialize";
     MembersComponent,
     MemberComponent,
     MessageFormComponent,
-    EmptyChatComponent
+    EmptyChatComponent,
+    JoinToRoomFormComponent,
+    CreateRoomFormComponent,
+    InviteUsersFormComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     MaterializeModule,
     RouterModule.forChild(routes),

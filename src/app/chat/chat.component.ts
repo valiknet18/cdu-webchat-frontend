@@ -8,6 +8,8 @@ import {RoomService} from "../shared/services/room.service";
 import {Router, ActivatedRoute} from "@angular/router";
 import {BehaviorSubject} from "rxjs";
 import {MaterializeAction} from "angular2-materialize";
+import { UserSocketService } from "../shared/services/user_socket.service";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'chat',
@@ -22,17 +24,22 @@ export class ChatComponent implements OnInit, OnDestroy {
   members: User[];
   room: Room;
   roomsModal = new EventEmitter<string|MaterializeAction>();
+  createRoomModal = new EventEmitter<string|MaterializeAction>();
+  inviteUsersModal = new EventEmitter<string|MaterializeAction>();
+  isJoinedToRoom: Boolean = false;
+  allUsers: User[];
 
   private sub: any;
 
   constructor(
+    private userSocketService: UserSocketService,
     private userService: UserService,
     private roomSocketService: RoomSocketService,
     private roomService: RoomService,
     private route: ActivatedRoute,
     private router: Router
   ) {
-
+    this.userSocketService.getCurrentUser();
   }
 
   ngOnInit() {
@@ -64,13 +71,25 @@ export class ChatComponent implements OnInit, OnDestroy {
   getRooms() {
     let self = this;
 
-    this.userService.getUser().subscribe(
-      (user?: User) => {
-        if (!user) {
+    this.roomSocketService.getRooms();
+
+    this.roomService.getRooms().subscribe(
+      (rooms?: Array<Room>) => {
+        if (!rooms) {
           return false;
         }
 
-        self.rooms = user.rooms;
+        console.log(rooms);
+
+        self.rooms = rooms;
+      }
+    );
+
+    this.userService.isJoinedToRoom().subscribe(
+      (isJoined) => {
+        console.log('Is joined: ', isJoined);
+
+        self.isJoinedToRoom = isJoined;
       }
     );
   }
@@ -81,8 +100,21 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.sub = this.route.params.subscribe(params => {
       let currentRoomId = +params["id"];
 
+
+      self.userService.joinToRoom(currentRoomId);
       self.roomSocketService.selectRoom(currentRoomId);
       self.roomService.getCurrentRoom().next(currentRoomId);
+    });
+
+    this.userSocketService.getUsers();
+    this.userService.getUsers().subscribe((users) => {
+      if (!users) {
+        return false;
+      }
+
+      this.allUsers = users;
+
+      console.log(this.allUsers);
     });
   }
 
@@ -90,7 +122,9 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.router.navigate(['/chat', room_id]);
     this.roomSocketService.selectRoom(room_id);
 
-    this.roomsModal.emit({action:"modal",params:['close']});
+    this.userService.joinToRoom(room_id);
+
+    this.roomsModal.emit({action:"modal", params: ['close']});
   }
 
   onSendMessage(messageForm: Object) {
@@ -99,8 +133,46 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.roomSocketService.sendMessage(messageForm);
   }
 
+  onJoinToRoom() {
+    this.roomSocketService.joinToRoom(this.room.id);
+    this.userService.isJoinedToRoom().next(true);
+  }
+
   openRoomsModal() {
     this.roomsModal.emit({action:"modal",params:['open']});
+  }
+
+  openCreateRoomModal() {
+    this.createRoomModal.emit({action:"modal",params:['open']});
+  }
+
+  openInviteUsersModal() {
+    this.inviteUsersModal.emit({action:"modal",params:['open']});
+  }
+
+  onCreateRoom(room) {
+    this.roomSocketService.createRoom(room.name);
+    this.createRoomModal.emit({action:"modal",params:['close']});
+  }
+
+  onCloseRoomForm() {
+    this.createRoomModal.emit({action:"modal",params:['close']});
+  }
+
+  onCloseInviteUsersPopup() {
+    this.inviteUsersModal.emit({action:"modal",params:['close']});
+  }
+
+  onSelectUsersForInvite(users) {
+    let userIds = [];
+    this.members = users;
+
+    for (let user of users) {
+      userIds.push(user.id);
+    }
+
+    this.roomSocketService.inviteUsers(this.room.id, userIds);
+    this.inviteUsersModal.emit({action:"modal",params:['close']});
   }
 }
 

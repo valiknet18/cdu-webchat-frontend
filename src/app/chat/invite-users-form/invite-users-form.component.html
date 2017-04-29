@@ -1,0 +1,18 @@
+<div class="row">
+  <form [formGroup]="inviteUsersForm" (ngSubmit)="onSubmitForm()">
+    <h4>Вибрати користувачів
+    </h4>
+    <div class="input-field col s6">
+      <select materialize="material_select" multiple [materializeSelectOptions]="users" formControlName="users" [(ngModel)]="selectedUsers">
+        <option value="" disabled selected>Choose your option</option>
+        <option *ngFor="let user of users" [ngValue]="user">{{ user.first_name }} {{ user.last_name }}</option>
+      </select>
+    </div>
+    <button type="submit" class="light-blue darken-3 btn right" style="margin-top: 15px">
+      <i class="material-icons right">playlist_add</i>Додати
+    </button>
+  </form>
+</div>
+<div class="row">
+  <a (click)="onClosePopup()" class="btn btn-success right">Закрити</a>
+</div>

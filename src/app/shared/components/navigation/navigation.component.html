@@ -17,12 +17,12 @@
         <li>
           <a>Профайл</a>
         </li>
-        <!--<li *ngIf="!user.last_selected_room" >-->
-          <!--<a [routerLink]="['/chat']" routerLinkActive="active">Чат</a>-->
-        <!--</li>-->
-        <!--<li *ngIf="user.last_selected_room" >-->
-          <!--<a [routerLink]="['/chat', user.last_selected_room]" routerLinkActive="active">Чат</a>-->
-        <!--</li>-->
+        <li *ngIf="!user.last_selected_room" >
+          <a [routerLink]="['/chat']" routerLinkActive="active">Чат</a>
+        </li>
+        <li *ngIf="user.last_selected_room" >
+          <a [routerLink]="['/chat', user.last_selected_room]" routerLinkActive="active">Чат</a>
+        </li>
         <li (click)="onLogout()">
           <a>Вихід</a>
         </li>

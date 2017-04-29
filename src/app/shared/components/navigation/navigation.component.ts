@@ -6,13 +6,14 @@ import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'main-navigation',
-  templateUrl: './navigation.component.html',
+  templateUrl: './navigat' +
+  'ion.component.html',
   styles: [
     './navigation.component.scss'
   ]
 })
 export class NavigationComponent implements OnInit {
-  isAuthorized: Boolean = true;
+  isAuthorized: Boolean = false;
   user: User = null;
 
   constructor(private userSocketService: UserSocketService, private userService: UserService) {}
@@ -24,7 +25,7 @@ export class NavigationComponent implements OnInit {
       .getCurrentUser()
       .subscribe(function (user?: User) {
         if (!user) {
-          self.isAuthorized = true;
+          self.isAuthorized = false;
 
           return false;
         }

@@ -16,7 +16,7 @@ export class MessageFormComponent implements OnInit {
       message: ['', [
         Validators.required
       ]]
-    })
+    });
   }
 
   onSend() {

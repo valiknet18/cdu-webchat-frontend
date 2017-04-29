@@ -62,7 +62,19 @@ export class UserSocketService implements SocketListeners {
     this.socketService.on('success', (attributes) => {
       let user = Object.assign(new User(), attributes['user']);
 
-      self.userService.getUser().next(user)
+      self.userService.getUser().next(user);
+    });
+
+    this.socketService.on('receive_users', (attributes) => {
+      let users = [];
+
+      for (let user of attributes['users']) {
+        users.push(Object.assign(new User(), user));
+      }
+
+      console.log(users);
+
+      self.userService.getUsers().next(users);
     });
   }
 
@@ -96,5 +108,9 @@ export class UserSocketService implements SocketListeners {
     this.socketService.emit("current_user");
 
     return this.userService.getUser();
+  }
+
+  getUsers() {
+    this.socketService.emit("get_users");
   }
 }

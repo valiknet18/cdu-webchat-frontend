@@ -6,6 +6,7 @@ import {Room} from "../models/room";
 export class RoomService {
   private room: BehaviorSubject<Room> = new BehaviorSubject(null);
   private currentRoom: BehaviorSubject<number> = new BehaviorSubject(null);
+  private rooms: BehaviorSubject<Array<Room>> = new BehaviorSubject(null);
 
   constructor() {}
 
@@ -15,5 +16,9 @@ export class RoomService {
 
   getCurrentRoom() {
     return this.currentRoom;
+  }
+
+  getRooms() {
+    return this.rooms;
   }
 }
