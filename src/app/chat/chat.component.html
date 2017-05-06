@@ -84,6 +84,6 @@
 <!-- Modal-three Structure -->
 <div id="modal3" class="modal invite-users-modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="inviteUsersModal">
   <div class="modal-content">
-    <app-invite-users-form [users]="allUsers" [members]="members" (closeInviteUsers)="onCloseInviteUsersPopup()" (selectUsers)="onSelectUsersForInvite($event)"></app-invite-users-form>
+    <app-invite-users-form [channelGroups]="groups" [allGroups]="allGroups" (closeInviteUsers)="onCloseInviteUsersPopup()" (selectUsers)="onSelectUsersForInvite($event)"></app-invite-users-form>
   </div>
 </div>

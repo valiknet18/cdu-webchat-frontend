@@ -4,12 +4,14 @@ import { User } from "../models/user";
 import {CookieService} from "angular2-cookie/services/cookies.service";
 import { Room } from "../models/room";
 import { UserSocketService } from "./user_socket.service";
+import { Group } from '../models/group';
 
 @Injectable()
 export class UserService {
   private user = new BehaviorSubject<User>(null);
   private users = new BehaviorSubject<Array<User>>(null);
   private joinedToRoom = new BehaviorSubject<Boolean>(false);
+  private groups = new BehaviorSubject<Array<Group>>(null);
 
   constructor(private cookieService: CookieService) {
     console.log('in user');
@@ -31,7 +33,7 @@ export class UserService {
         return false;
       }
 
-      const rooms = user.rooms.filter((room) => {
+      const rooms = user.group.rooms.filter((room) => {
         return room.id === room_id;
       });
 
@@ -45,5 +47,9 @@ export class UserService {
 
   getUsers() {
     return this.users;
+  }
+
+  getGroups() {
+    return this.groups;
   }
 }

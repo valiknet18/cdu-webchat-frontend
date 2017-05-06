@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminSocketService } from '../../../shared/services/admin-socket.service';
+import { AdminService } from '../../../shared/services/admin.service';
+import { User } from '../../../shared/models/user';
 
 @Component({
   selector: 'app-users-list',
@@ -6,20 +9,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
-  users: Array<Object> = [
-    {avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGC7WoaSlI0VlFbyrZ-QC-POW4gtGdn2W6oiklNvOXsLWODCgFyqIvG6E', first_name: 'Студент1', last_name: 'Студентський', username: 'student1', email: 'student@example.com', role: 'Студент'},
-    {avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGC7WoaSlI0VlFbyrZ-QC-POW4gtGdn2W6oiklNvOXsLWODCgFyqIvG6E', first_name: 'Студент2', last_name: 'Студентський', username: 'student1', email: 'student@example.com', role: 'Студент'},
-    {avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGC7WoaSlI0VlFbyrZ-QC-POW4gtGdn2W6oiklNvOXsLWODCgFyqIvG6E', first_name: 'Студент3', last_name: 'Студентський', username: 'student1', email: 'student@example.com', role: 'Студент'},
-    {avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGC7WoaSlI0VlFbyrZ-QC-POW4gtGdn2W6oiklNvOXsLWODCgFyqIvG6E', first_name: 'Студент4', last_name: 'Студентський', username: 'student1', email: 'student@example.com', role: 'Студент'},
-    {avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGC7WoaSlI0VlFbyrZ-QC-POW4gtGdn2W6oiklNvOXsLWODCgFyqIvG6E', first_name: 'Студент5', last_name: 'Студентський', username: 'student1', email: 'student@example.com', role: 'Студент'},
-    {avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGC7WoaSlI0VlFbyrZ-QC-POW4gtGdn2W6oiklNvOXsLWODCgFyqIvG6E', first_name: 'Викладач', last_name: 'Викладачськи', username: 'student1', email: 'student@example.com', role: 'Викладач'},
-  ];
+  users: Array<Object>;
   filteredUsers: Array<Object> = [];
   filteredValue = '';
-  constructor() { }
+  constructor(
+    private adminSocketService: AdminSocketService,
+    private adminService: AdminService
+  ) {
+    this.adminSocketService.getUsers();
+  }
 
   ngOnInit() {
-    this.filteredUsers = this.users;
+    this.adminService.getUsers().subscribe((users?) => {
+      if (!users) {
+        return false;
+      }
+
+      console.log(users);
+
+      this.filteredUsers = users;
+      this.users = users;
+    });
   }
 
   onFilterUsers(value) {
@@ -28,5 +38,9 @@ export class UsersListComponent implements OnInit {
     this.filteredUsers = this.users.filter(user => {
       return user['first_name'].indexOf(value) !== -1 || user['last_name'].indexOf(value) !== -1;
     });
+  }
+
+  onDelete(user: User) {
+    this.adminSocketService.deleteUser(user.id);
   }
 }

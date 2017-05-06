@@ -3,9 +3,9 @@
     <nav>
       <div class="nav-wrapper teal lighten-2">
         <div class="col s12">
-          <a href="#!" class="breadcrumb">Адміністративна зона</a>
-          <a href="#!" class="breadcrumb">Список користувачів</a>
-          <a href="#!" class="breadcrumb">Редагування користувача</a>
+          <a href="#!" class="breadcrumb" routerLink="/admin">Адміністративна зона</a>
+          <a href="#!" class="breadcrumb" routerLink="/admin/users">Список користувачів</a>
+          <a href="#!" class="breadcrumb" [routerLink]="['/admin/users', user.id, 'edit']">Редагування користувача</a>
         </div>
       </div>
     </nav>
@@ -15,7 +15,7 @@
       </div>
 
       <div class="group-form">
-        <app-user-form></app-user-form>
+        <app-user-form [user]="user" (submitUser)="onSubmitUser($event)"></app-user-form>
       </div>
     </div>
   </div>

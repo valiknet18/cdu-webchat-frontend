@@ -12,7 +12,7 @@ export const routes: Routes = [
   {path: '', component: IndexComponent},
   {path: 'users', children: [
     {path: 'create', component: CreateUserComponent},
-    {path: 'item/edit', component: EditUserComponent},
+    {path: ':id/edit', component: EditUserComponent},
     {path: '', component: UsersListComponent},
   ]},
   {path: 'groups', children: [

@@ -1,11 +1,11 @@
 <div class="row">
   <form [formGroup]="inviteUsersForm" (ngSubmit)="onSubmitForm()">
-    <h4>Вибрати користувачів
+    <h4>Вибрати групи
     </h4>
     <div class="input-field col s6">
-      <select materialize="material_select" multiple [materializeSelectOptions]="users" formControlName="users" [(ngModel)]="selectedUsers">
+      <select materialize="material_select" multiple [materializeSelectOptions]="allGroups" formControlName="groups" [(ngModel)]="selectedGroups">
         <option value="" disabled selected>Choose your option</option>
-        <option *ngFor="let user of users" [ngValue]="user">{{ user.first_name }} {{ user.last_name }}</option>
+        <option *ngFor="let group of allGroups" [ngValue]="group">{{ group.name }}</option>
       </select>
     </div>
     <button type="submit" class="light-blue darken-3 btn right" style="margin-top: 15px">

@@ -1,5 +1,5 @@
-import {Message} from "./message";
-import {User} from "./user";
+import { Message } from './message';
+import { Group } from './group';
 
 export class Room {
   id: number;
@@ -7,5 +7,5 @@ export class Room {
   created_by: number;
   created_at: string;
   messages: Message[];
-  members: User[];
+  groups: Group[];
 }

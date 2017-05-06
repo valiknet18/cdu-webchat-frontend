@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminSocketService } from '../../../shared/services/admin-socket.service';
+import { Router, RouterState } from '@angular/router';
 
 @Component({
   selector: 'app-create-user',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateUserComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private adminSocketService: AdminSocketService,
+    private router: Router
+  ) {
+    this.adminSocketService.getGroups();
+  }
 
   ngOnInit() {
   }
 
+  onSubmitUser(user) {
+    this
+      .adminSocketService
+      .createUser(user);
+
+    this.router.navigate(['/admin/users']);
+  }
 }

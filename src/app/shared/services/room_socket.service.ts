@@ -13,15 +13,17 @@ export class RoomSocketService implements SocketListeners {
   registerListeners() {
     let self = this;
 
-    this.socketService.on('successful_selected_room', function (socket) {
-      let room = Object.assign(new Room(), socket['room']);
+    this.socketService.on('successful_selected_room', function (attributes) {
+      console.log(attributes['room']);
 
-      console.log(socket);
+      let room = Object.assign(new Room(), attributes['room']);
 
       self.roomService.getRoom().next(room);
     });
 
     this.socketService.on('receive_messages', function (attributes) {
+      console.log(attributes['room']);
+
       let room = Object.assign(new Room(), attributes['room']);
 
       console.log(room);
@@ -72,10 +74,10 @@ export class RoomSocketService implements SocketListeners {
     });
   }
 
-  inviteUsers(room_id: number, users: Array<User>) {
-    this.socketService.emit('invite_users', {
-      room: room_id,
-      users: users
+  inviteGroups(room_id: number, groups: Array<number>) {
+    this.socketService.emit('invite_groups', {
+      room_id: room_id,
+      groups: groups
     });
   }
 }

@@ -10,6 +10,7 @@ export class RoomsComponent {
   @Output() selectRoom: EventEmitter<number> = new EventEmitter();
 
   onSelectRoom(room: Room) {
+    console.log(room);
     this.selectRoom.next(room.id);
   }
 }

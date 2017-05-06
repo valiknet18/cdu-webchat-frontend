@@ -3,8 +3,8 @@
     <nav>
       <div class="nav-wrapper teal lighten-2">
         <div class="col s12">
-          <a href="#!" class="breadcrumb">Адміністративна зона</a>
-          <a href="#!" class="breadcrumb">Список користувачів</a>
+          <a href="#!" class="breadcrumb" routerLink="/admin">Адміністративна зона</a>
+          <a href="#!" class="breadcrumb" routerLink="/admin/users">Список користувачів</a>
         </div>
       </div>
     </nav>
@@ -40,7 +40,7 @@
           <tbody>
           <tr *ngFor="let user of filteredUsers">
             <td>
-              <img src="{{ user.avatar }}" class="small-avatar">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGC7WoaSlI0VlFbyrZ-QC-POW4gtGdn2W6oiklNvOXsLWODCgFyqIvG6E" class="small-avatar">
             </td>
             <td>{{ user.last_name }}</td>
             <td>{{ user.first_name }}</td>
@@ -48,8 +48,8 @@
             <td>{{ user.email }}</td>
             <td>{{ user.role }}</td>
             <td>
-              <i materialize="tooltip" class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Редагувати" routerLink="/admin/users/item/edit">edit</i>
-              <i materialize="tooltip" class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Видалити">delete</i>
+              <i materialize="tooltip" class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Редагувати" [routerLink]="['/admin/users/', user.id, 'edit']">edit</i>
+              <i materialize="tooltip" class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Видалити" (click)="onDelete(user)">delete</i>
             </td>
           </tr>
           </tbody>

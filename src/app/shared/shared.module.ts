@@ -4,6 +4,8 @@ import { UserSocketService } from './services/user_socket.service';
 import { SocketService } from './services/socket.service';
 import { RoomService } from './services/room.service';
 import {RoomSocketService } from './services/room_socket.service';
+import { AdminService } from './services/admin.service';
+import { AdminSocketService } from './services/admin-socket.service';
 
 @NgModule({
   declarations: [],
@@ -14,7 +16,9 @@ import {RoomSocketService } from './services/room_socket.service';
     UserSocketService,
     SocketService,
     RoomService,
-    RoomSocketService
+    RoomSocketService,
+    AdminService,
+    AdminSocketService
   ]
 })
 export class SharedModule {}

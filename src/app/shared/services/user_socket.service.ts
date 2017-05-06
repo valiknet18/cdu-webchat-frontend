@@ -5,6 +5,7 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { UserService } from "./user.service";
 import { User } from "../models/user";
 import { Subject } from "rxjs";
+import { Group } from '../models/group';
 
 @Injectable()
 export class UserSocketService implements SocketListeners {
@@ -60,6 +61,8 @@ export class UserSocketService implements SocketListeners {
       self.userService.getUser().next(null);
     });
     this.socketService.on('success', (attributes) => {
+      console.log(attributes['user']);
+
       let user = Object.assign(new User(), attributes['user']);
 
       self.userService.getUser().next(user);
@@ -75,6 +78,18 @@ export class UserSocketService implements SocketListeners {
       console.log(users);
 
       self.userService.getUsers().next(users);
+    });
+
+    this.socketService.on('receive_groups', (attributes) => {
+      let groups = [];
+
+      for (let group of attributes['groups']) {
+        groups.push(Object.assign(new Group(), group));
+      }
+
+      console.log(groups);
+
+      self.userService.getGroups().next(groups);
     });
   }
 
@@ -112,5 +127,9 @@ export class UserSocketService implements SocketListeners {
 
   getUsers() {
     this.socketService.emit("get_users");
+  }
+
+  getGroups() {
+    this.socketService.emit('get_groups');
   }
 }

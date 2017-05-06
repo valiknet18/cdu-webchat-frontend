@@ -1,4 +1,4 @@
-import { Room } from "./room";
+import { Group } from "./group";
 
 export class User {
   id: number;
@@ -6,9 +6,8 @@ export class User {
   last_name: string;
   username: string;
   email: string;
-  is_super_admin: boolean;
   role: string;
   password?: string;
-  rooms: Room[];
+  group?: Group;
   last_selected_room: number;
 }

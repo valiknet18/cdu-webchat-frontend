@@ -1,36 +1,28 @@
 <div class="row">
-  <form class="col s12" ngNoForm>
+  <form class="col s12" [formGroup]="form" (ngSubmit)="onSubmitForm()">
     <div class="row">
       <div class="input-field col s6">
-        <input id="first-name" type="text" class="validate">
+        <input id="first-name" type="text" class="validate" formControlName="first_name" [(ngModel)]="user.first_name">
         <label for="first-name" class="">Ім’я: </label>
       </div>
       <div class="input-field col s6">
-        <input id="last-name" type="text" class="validate">
+        <input id="last-name" type="text" class="validate" formControlName="last_name" [(ngModel)]="user.last_name">
         <label for="last-name">Прізвище: </label>
       </div>
       <div class="input-field col s6">
-        <input id="nik" type="text" class="validate">
+        <input id="nik" type="text" class="validate" formControlName="username" [(ngModel)]="user.username">
         <label for="nik">Нікнейм: </label>
       </div>
       <div class="input-field col s6">
-        <input id="email" type="text" class="validate">
+        <input id="email" type="text" class="validate" formControlName="email" [(ngModel)]="user.email">
         <label for="email">Email: </label>
       </div>
       <div class="input-field col s6">
-        <input id="password1" type="text" class="validate">
+        <input id="password1" type="password" class="validate" formControlName="password">
         <label for="password1">Поточний пароль: </label>
       </div>
       <div class="input-field col s6">
-        <input id="password2" type="text" class="validate">
-        <label for="password2">Новий пароль: </label>
-      </div>
-      <div class="input-field col s6">
-        <input id="password3" type="text" class="validate">
-        <label for="password3">Повторіть новий пароль: </label>
-      </div>
-      <div class="input-field col s6">
-        <select materialize="material_select" class="role" [(ngModel)]="selectedRole">
+        <select materialize="material_select" class="role" formControlName="role" [(ngModel)]="user.role">
           <option value="" disabled selected>Виберіть потрібну роль</option>
           <option value="student">Студент</option>
           <option value="teacher">Викладач</option>
@@ -38,15 +30,15 @@
         </select>
       </div>
 
-      <div class="input-field col s6" *ngIf="selectedRole == 'student'">
-        <select materialize="material_select" class="group">
+      <div class="input-field col s6" *ngIf="user.role == 'student'">
+        <select materialize="material_select" class="group" formControlName="group" [materializeSelectOptions]="groups" [(ngModel)]="user.group">
           <option value="" disabled selected>Виберіть потрібну групу</option>
-          <option value="ke-12">КЕ-12</option>
-          <option value="ki-12">КІ-12</option>
-          <option value="ks-12">КС-12</option>
+          <option *ngFor="let group of groups" [ngValue]="group">{{ group.name }}</option>
         </select>
       </div>
     </div>
-    <button type="submit" class="waves-effect waves-light btn">Зберегти</button>
+    <div class="row">
+      <button type="submit" class="waves-effect waves-light btn">Зберегти</button>
+    </div>
   </form>
 </div>

@@ -1,15 +1,16 @@
-import {Component, OnInit, OnDestroy, EventEmitter} from "@angular/core";
-import {Room} from "../shared/models/room";
-import {Message} from "../shared/models/message";
-import {UserService} from "../shared/services/user.service";
-import {User} from "../shared/models/user";
-import {RoomSocketService} from "../shared/services/room_socket.service";
-import {RoomService} from "../shared/services/room.service";
-import {Router, ActivatedRoute} from "@angular/router";
-import {BehaviorSubject} from "rxjs";
-import {MaterializeAction} from "angular2-materialize";
-import { UserSocketService } from "../shared/services/user_socket.service";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Component, OnInit, OnDestroy, EventEmitter } from '@angular/core';
+import { Room } from '../shared/models/room';
+import { Message } from '../shared/models/message';
+import { UserService } from '../shared/services/user.service';
+import { User } from '../shared/models/user';
+import { RoomSocketService } from '../shared/services/room_socket.service';
+import { RoomService } from '../shared/services/room.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+import { MaterializeAction } from 'angular2-materialize';
+import { UserSocketService } from '../shared/services/user_socket.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Group } from '../shared/models/group';
 
 @Component({
   selector: 'chat',
@@ -23,23 +24,24 @@ export class ChatComponent implements OnInit, OnDestroy {
   messages: Message[];
   members: User[];
   room: Room;
-  roomsModal = new EventEmitter<string|MaterializeAction>();
-  createRoomModal = new EventEmitter<string|MaterializeAction>();
-  inviteUsersModal = new EventEmitter<string|MaterializeAction>();
+  groups: Group[];
+  allGroups: Group[];
+  roomsModal = new EventEmitter<string | MaterializeAction>();
+  createRoomModal = new EventEmitter<string | MaterializeAction>();
+  inviteUsersModal = new EventEmitter<string | MaterializeAction>();
   isJoinedToRoom: Boolean = false;
   allUsers: User[];
 
   private sub: any;
 
-  constructor(
-    private userSocketService: UserSocketService,
-    private userService: UserService,
-    private roomSocketService: RoomSocketService,
-    private roomService: RoomService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {
+  constructor(private userSocketService: UserSocketService,
+              private userService: UserService,
+              private roomSocketService: RoomSocketService,
+              private roomService: RoomService,
+              private route: ActivatedRoute,
+              private router: Router) {
     this.userSocketService.getCurrentUser();
+    this.userSocketService.getGroups();
   }
 
   ngOnInit() {
@@ -53,17 +55,24 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   getMessages() {
-    let self = this;
-
     this.roomService.getRoom().subscribe(
       (room?: Room) => {
         if (!room) {
           return false;
         }
 
-        self.room = room;
-        self.members = room.members;
-        self.messages = room.messages;
+        let members = [];
+
+        console.log(room);
+
+        for (let group of room.groups) {
+          members.push(...group.students);
+        }
+
+        this.room = room;
+        this.members = members;
+        this.groups = room.groups;
+        this.messages = room.messages;
       }
     );
   }
@@ -92,13 +101,24 @@ export class ChatComponent implements OnInit, OnDestroy {
         self.isJoinedToRoom = isJoined;
       }
     );
+
+    this.userService.getGroups().subscribe((groups?: Group[]) => {
+      if (!groups) {
+        return false;
+      }
+
+      console.log('get groups');
+      console.log(groups);
+
+      this.allGroups = groups;
+    });
   }
 
   getCurrentRoom() {
     let self = this;
 
     this.sub = this.route.params.subscribe(params => {
-      let currentRoomId = +params["id"];
+      let currentRoomId = +params['id'];
 
 
       self.userService.joinToRoom(currentRoomId);
@@ -124,7 +144,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
     this.userService.joinToRoom(room_id);
 
-    this.roomsModal.emit({action:"modal", params: ['close']});
+    this.roomsModal.emit({action: 'modal', params: ['close']});
   }
 
   onSendMessage(messageForm: Object) {
@@ -139,81 +159,40 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   openRoomsModal() {
-    this.roomsModal.emit({action:"modal",params:['open']});
+    this.roomsModal.emit({action: 'modal', params: ['open']});
   }
 
   openCreateRoomModal() {
-    this.createRoomModal.emit({action:"modal",params:['open']});
+    this.createRoomModal.emit({action: 'modal', params: ['open']});
   }
 
   openInviteUsersModal() {
-    this.inviteUsersModal.emit({action:"modal",params:['open']});
+    this.inviteUsersModal.emit({action: 'modal', params: ['open']});
   }
 
   onCreateRoom(room) {
     this.roomSocketService.createRoom(room.name);
-    this.createRoomModal.emit({action:"modal",params:['close']});
+    this.createRoomModal.emit({action: 'modal', params: ['close']});
   }
 
   onCloseRoomForm() {
-    this.createRoomModal.emit({action:"modal",params:['close']});
+    this.createRoomModal.emit({action: 'modal', params: ['close']});
   }
 
   onCloseInviteUsersPopup() {
-    this.inviteUsersModal.emit({action:"modal",params:['close']});
+    this.inviteUsersModal.emit({action: 'modal', params: ['close']});
   }
 
-  onSelectUsersForInvite(users) {
-    let userIds = [];
-    this.members = users;
+  onSelectUsersForInvite(groups) {
+    let groupIds = [];
 
-    for (let user of users) {
-      userIds.push(user.id);
+    for (let group of groups) {
+      groupIds.push(group.id);
     }
 
-    this.roomSocketService.inviteUsers(this.room.id, userIds);
-    this.inviteUsersModal.emit({action:"modal",params:['close']});
-  }
-}
+    console.log('before send invite');
 
-@Component({
-  selector: 'empty-chat',
-  templateUrl: './empty-chat.component.html'
-})
-export class EmptyChatComponent implements OnInit {
-  rooms: Room[];
-
-  constructor(
-    private userService: UserService,
-    private router: Router
-  ) {
-
-  }
-  ngOnInit() {
-    this.getRooms();
-  }
-
-  getRooms() {
-    let self = this;
-
-    this.userService.getUser().subscribe(
-      (user?: User) => {
-        if (!user) {
-          return false;
-        }
-
-        self.rooms = user.rooms;
-
-        if (!user.last_selected_room) {
-          return false;
-        }
-
-        self.onSelectRoom(user.last_selected_room);
-      }
-    );
-  }
-
-  onSelectRoom(room_id: number) {
-    this.router.navigate(['/chat', room_id]);
+    this.roomSocketService.inviteGroups(this.room.id, groupIds);
+    this.inviteUsersModal.emit({action: 'modal', params: ['close']});
   }
 }
