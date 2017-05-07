@@ -17,10 +17,10 @@ export const routes: Routes = [
   ]},
   {path: 'groups', children: [
     {path: 'create', component: CreateGroupComponent},
-    {path: 'item/edit', component: EditGroupComponent},
+    {path: ':id/edit', component: EditGroupComponent},
     {path: '', component: GroupsListComponent},
   ]},
-  {path: 'consultations', children: [
+  {path: 'events', children: [
     {path: '', component: ConsultationsListComponent},
   ]}
 ];

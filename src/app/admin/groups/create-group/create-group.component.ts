@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminSocketService } from '../../../shared/services/admin-socket.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-group',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateGroupComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private adminSocketService: AdminSocketService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
 
+  onCreateGroup(group) {
+    console.log('New group creating');
+
+    this.adminSocketService.createGroup(group);
+    this.router.navigate(['/admin/groups']);
+  }
 }

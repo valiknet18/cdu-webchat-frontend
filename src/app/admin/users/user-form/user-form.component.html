@@ -31,7 +31,7 @@
       </div>
 
       <div class="input-field col s6" *ngIf="user.role == 'student'">
-        <select materialize="material_select" class="group" formControlName="group" [materializeSelectOptions]="groups" [(ngModel)]="user.group">
+        <select materialize="material_select" class="group" formControlName="group" [materializeSelectOptions]="groups" [(ngModel)]="selectedUserGroup">
           <option value="" disabled selected>Виберіть потрібну групу</option>
           <option *ngFor="let group of groups" [ngValue]="group">{{ group.name }}</option>
         </select>

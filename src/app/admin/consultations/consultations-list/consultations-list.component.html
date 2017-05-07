@@ -3,14 +3,14 @@
     <nav>
       <div class="nav-wrapper teal lighten-2">
         <div class="col s12">
-          <a href="#!" class="breadcrumb">Адміністративна зона</a>
-          <a href="#!" class="breadcrumb">Список консультацій</a>
+          <a href="#!" class="breadcrumb" routerLink="/admin">Адміністративна зона</a>
+          <a href="#!" class="breadcrumb" routerLink="/admin/events">Список консультацій</a>
         </div>
       </div>
     </nav>
     <div class="card-panel">
       <div class="main-title">
-        <h3>Список груп</h3>
+        <h3>Список консультацій</h3>
       </div>
       <div class="search-area">
         <form class="col s12 search-consultation" ngNoForm>
@@ -28,16 +28,16 @@
           <thead>
           <tr>
             <th>Назва</th>
-            <th>Дата</th>
+            <th>Дата початку</th>
             <th>Викладач</th>
           </tr>
           </thead>
 
           <tbody>
-          <tr *ngFor="let consultation of filteredConsultations">
+          <tr *ngFor="let consultation of filteredEvents">
             <td>{{ consultation.name }}</td>
-            <td>{{ consultation.date }}</td>
-            <td>{{ consultation.teacher }}</td>
+            <td>{{ consultation.start_at | date:'medium' }}</td>
+            <td>{{ consultation.teacher?.first_name }} {{ consultation.teacher?.last_name }}</td>
           </tr>
           </tbody>
         </table>

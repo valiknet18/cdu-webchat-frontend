@@ -20,6 +20,7 @@ export class CreateUserComponent implements OnInit {
   }
 
   onSubmitUser(user) {
+
     this
       .adminSocketService
       .createUser(user);

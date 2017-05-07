@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../../../shared/services/admin.service';
+import { AdminSocketService } from '../../../shared/services/admin-socket.service';
 
 @Component({
   selector: 'app-consultations-list',
@@ -6,24 +8,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./consultations-list.component.scss']
 })
 export class ConsultationsListComponent implements OnInit {
-  consultations: Array<Object> = [
-    {name: 'Консультація 1', date: '10.10.2017 10:20:30', teacher: 'Викладач 1'},
-    {name: 'Консультація 2', date: '10.10.2017 10:20:30', teacher: 'Викладач 1'},
-    {name: 'Консультація 3', date: '10.10.2017 10:20:30', teacher: 'Викладач 2'},
-    {name: 'Консультація 4', date: '10.10.2017 10:20:30', teacher: 'Викладач 3'},
-    {name: 'Консультація 5', date: '10.10.2017 10:20:30', teacher: 'Викладач 1'},
-  ];
-  filteredConsultations = [];
+  events: Array<Object>;
+  filteredEvents = [];
   filteredValue = '';
-  constructor() { }
+  constructor(
+    private adminService: AdminService,
+    private adminSocketService: AdminSocketService
+  ) {
+    this.adminSocketService.getEvents();
+  }
 
   ngOnInit() {
-    this.filteredConsultations = this.consultations;
+    this.adminService.getEvents().subscribe((events?) => {
+      if (!events) {
+        return false;
+      }
+
+      this.filteredEvents = events;
+      this.events = events;
+    });
   }
 
   onFilterConsultation(value) {
-    this.filteredConsultations = this.consultations.filter(consultation => {
-      return consultation['name'].indexOf(value) !== -1 || consultation['teacher'].indexOf(value) !== -1;
+    this.filteredEvents = this.events.filter(consultation => {
+      return consultation['name'].indexOf(value) !== -1;
     });
   }
 }

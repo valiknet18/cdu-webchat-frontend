@@ -3,8 +3,8 @@
     <nav>
       <div class="nav-wrapper teal lighten-2">
         <div class="col s12">
-          <a href="#!" class="breadcrumb">Адміністративна зона</a>
-          <a href="#!" class="breadcrumb">Список груп</a>
+          <a href="#!" class="breadcrumb" routerLink="/admin">Адміністративна зона</a>
+          <a href="#!" class="breadcrumb" routerLink="/admin/groups">Список груп</a>
         </div>
       </div>
     </nav>
@@ -36,10 +36,10 @@
           <tbody>
           <tr *ngFor="let group of filteredGroups">
             <td>{{ group.name }}</td>
-            <td>{{ group.count_students }}</td>
+            <td>{{ group.students.length }}</td>
             <td>
-              <i materialize="tooltip" class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Редагувати" routerLink="/admin/groups/item/edit">edit</i>
-              <i materialize="tooltip" class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Видалити">delete</i>
+              <i materialize="tooltip" class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Редагувати" [routerLink]="['/admin/groups', group.id, 'edit']">edit</i>
+              <i materialize="tooltip" class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Видалити" (click)="onDelete(group)">delete</i>
             </td>
           </tr>
           </tbody>

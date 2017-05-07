@@ -37,6 +37,8 @@ export class AdminSocketService implements SocketListeners{
         return false;
       }
 
+      console.log(attributes['groups']);
+
       let groups = [];
 
       for (let group of attributes['groups']) {
@@ -44,6 +46,8 @@ export class AdminSocketService implements SocketListeners{
           Object.assign({}, group, new Group())
         );
       }
+
+      console.log(groups);
 
       this.adminService.getGroups().next(groups);
     });
@@ -63,12 +67,14 @@ export class AdminSocketService implements SocketListeners{
         return false;
       }
 
-      let group = Object.assign({}, attributes['group'], new Group());
+      const group = Object.assign({}, attributes['group'], new Group());
 
       this.adminService.getGroup().next(group);
     });
 
     this.socketService.on('admin_receive_events', (attributes) => {
+      console.log(attributes['events']);
+
       if (!attributes['events']) {
         return false;
       }
@@ -130,16 +136,16 @@ export class AdminSocketService implements SocketListeners{
     this.socketService.emit('admin_get_groups');
   }
 
-  createGroup(name: String) {
+  createGroup(group: Group) {
     this.socketService.emit('admin_create_group', {
-      name: name
+      name: group.name
     });
   }
 
-  editGroup(id: number) {
+  editGroup(group: Group) {
     this.socketService.emit('admin_edit_group', {
-      id: id,
-      name: name
+      id: group.id,
+      name: group.name
     });
   }
 
@@ -149,8 +155,10 @@ export class AdminSocketService implements SocketListeners{
     });
   }
 
-  deleteGroup(id: number) {
-    this.socketService.emit('admin_delete_group');
+  deleteGroup(group: Group) {
+    this.socketService.emit('admin_delete_group', {
+      id: group.id
+    });
   }
 
   getEvents() {

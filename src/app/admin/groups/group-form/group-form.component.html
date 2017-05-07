@@ -1,9 +1,9 @@
 <div class="row">
-  <form class="col s12" ngNoForm>
+  <form class="col s12" [formGroup]="form" (ngSubmit)="onSubmitUser()">
     <div class="row">
       <div class="input-field col s6">
-        <input id="name" type="text" class="validate">
-        <label for="name" class="" [(ngModel)]="group.name">Назва групи: </label>
+        <input id="name" type="text" class="validate" formControlName="name" [(ngModel)]="group.name">
+        <label for="name" class="">Назва групи: </label>
       </div>
     </div>
     <button type="submit" class="waves-effect waves-light btn">Зберегти</button>

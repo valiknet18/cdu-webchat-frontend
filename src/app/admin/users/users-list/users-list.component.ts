@@ -9,8 +9,8 @@ import { User } from '../../../shared/models/user';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
-  users: Array<Object>;
-  filteredUsers: Array<Object> = [];
+  users: Array<User>;
+  filteredUsers: Array<User> = [];
   filteredValue = '';
   constructor(
     private adminSocketService: AdminSocketService,
@@ -24,8 +24,6 @@ export class UsersListComponent implements OnInit {
       if (!users) {
         return false;
       }
-
-      console.log(users);
 
       this.filteredUsers = users;
       this.users = users;
