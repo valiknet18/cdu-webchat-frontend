@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter, group } from '@angular/core';
 import { Room } from '../shared/models/room';
 import { Message } from '../shared/models/message';
 import { UserService } from '../shared/services/user.service';
@@ -61,6 +61,8 @@ export class ChatComponent implements OnInit, OnDestroy {
           return false;
         }
 
+        this.userService.joinToRoom(room);
+
         let members = [];
 
         console.log(room);
@@ -68,6 +70,8 @@ export class ChatComponent implements OnInit, OnDestroy {
         for (let group of room.groups) {
           members.push(...group.students);
         }
+
+        members.push(room.teacher);
 
         this.room = room;
         this.members = members;
@@ -121,7 +125,6 @@ export class ChatComponent implements OnInit, OnDestroy {
       let currentRoomId = +params['id'];
 
 
-      self.userService.joinToRoom(currentRoomId);
       self.roomSocketService.selectRoom(currentRoomId);
       self.roomService.getCurrentRoom().next(currentRoomId);
     });
@@ -141,8 +144,6 @@ export class ChatComponent implements OnInit, OnDestroy {
   onSelectRoom(room_id: number) {
     this.router.navigate(['/chat', room_id]);
     this.roomSocketService.selectRoom(room_id);
-
-    this.userService.joinToRoom(room_id);
 
     this.roomsModal.emit({action: 'modal', params: ['close']});
   }

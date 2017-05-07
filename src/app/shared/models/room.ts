@@ -1,5 +1,6 @@
 import { Message } from './message';
 import { Group } from './group';
+import { User } from './user';
 
 export class Room {
   id: number;
@@ -8,4 +9,5 @@ export class Room {
   created_at: string;
   messages: Message[];
   groups: Group[];
+  teacher?: User;
 }

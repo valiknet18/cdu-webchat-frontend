@@ -25,7 +25,6 @@
           <messages [messages]="messages"></messages>
         </div>
         <message-form (sendMessage)="onSendMessage($event)" *ngIf="isJoinedToRoom"></message-form>
-        <app-join-to-room-form (joinToRoom)="onJoinToRoom()" *ngIf="!isJoinedToRoom"></app-join-to-room-form>
       </div>
     </div>
   </div>

@@ -19,7 +19,7 @@ export class InviteUsersFormComponent implements OnInit, OnChanges {
   @Input() channelGroups: Array<Group>;
   @Input() allGroups: Array<Group>;
 
-  selectedGroups = [];
+  selectedGroups: Array<Group>;
   inviteUsersForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
@@ -32,20 +32,15 @@ export class InviteUsersFormComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
-
-    if (
-      ('channelGroups' in changes && !changes['channelGroups'].previousValue) ||
-      ('allGroups' in changes && !changes['allGroups'].previousValue)
-    ) {
-      this.getSelectedGroups();
-    }
+    this.getSelectedGroups();
   }
 
   private getSelectedGroups() {
     if (!this.allGroups || !this.channelGroups) {
       return false;
     }
+
+    this.selectedGroups = [];
 
     for (let group of this.allGroups) {
       for (let channelGroup of this.channelGroups) {
@@ -56,6 +51,7 @@ export class InviteUsersFormComponent implements OnInit, OnChanges {
     }
 
     console.log(this.selectedGroups);
+    console.log(this.allGroups);
   }
 
   onSubmitForm() {

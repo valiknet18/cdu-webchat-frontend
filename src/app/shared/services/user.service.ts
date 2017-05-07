@@ -25,7 +25,7 @@ export class UserService {
     this.cookieService.remove('token');
   }
 
-  joinToRoom(room_id: number) {
+  joinToRoom(selectedRoom: Room) {
     const self = this;
 
     this.user.subscribe((user?: User) => {
@@ -33,11 +33,19 @@ export class UserService {
         return false;
       }
 
-      const rooms = user.group.rooms.filter((room) => {
-        return room.id === room_id;
-      });
+      let isJoinedToRoom = false;
 
-      self.joinedToRoom.next(rooms.length > 0);
+      if (user.role === 'student') {
+        isJoinedToRoom = user.group.rooms.filter((room) => {
+          return room.id === selectedRoom.id;
+        }).length > 0;
+      } else {
+        isJoinedToRoom = selectedRoom.teacher.id === user.id;
+      }
+
+      console.log(isJoinedToRoom);
+
+      self.joinedToRoom.next(isJoinedToRoom);
     });
   }
 
