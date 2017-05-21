@@ -1,0 +1,25 @@
+<div class="row">
+  <form class="col s12" [formGroup]="form" (ngSubmit)="onSubmitForm()">
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="name" type="text" class="validate" formControlName="name" [(ngModel)]="event.name">
+        <label for="name" class="">Назва консультації: </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="start_at" formControlName="start_at" [ngModel]="event.start_at | date: 'short'" [(dateTimePicker)]="event.start_at"
+               class="picker-input"
+               [mode]="'inline'"
+               readonly />
+      </div>
+    </div>
+    <div class="row">
+      <select materialize="material_select" multiple [materializeSelectOptions]="allGroups" formControlName="groups" [(ngModel)]="selectedGroups">
+        <option value="" disabled selected>Виберіть потрібні групи</option>
+        <option *ngFor="let group of allGroups" [ngValue]="group">{{ group.name }}</option>
+      </select>
+    </div>
+    <button type="submit" class="waves-effect waves-light btn">Зберегти</button>
+  </form>
+</div>

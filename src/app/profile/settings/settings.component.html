@@ -1,0 +1,41 @@
+<div class="s-page">
+  <h3>Налаштування</h3>
+  <div class="row">
+    <form class="col s12 row" [formGroup]="form" (ngSubmit)="updateUserData()">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="icon_prefix" type="text" class="validate" formControlName="first_name" [(ngModel)]="user.first_name">
+          <label for="icon_prefix">Ім’я</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="icon_prefix-last" type="text" class="validate" formControlName="last_name" [(ngModel)]="user.last_name">
+          <label for="icon_prefix">Прізвище</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="icon_prefix-nik" type="text" class="validate" formControlName="username" [(ngModel)]="user.username">
+          <label for="icon_prefix">Нікнейм</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">email</i>
+          <input id="icon_email" type="email" class="validate" formControlName="email" [(ngModel)]="user.email">
+          <label for="icon_email">Email</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">lock</i>
+          <input type="password" id="password2" class="validate" formControlName="password" [(ngModel)]="user.password">
+          <label for="password2">Новий пароль: </label>
+        </div>
+      </div>
+      <div class="button-center">
+        <button type="submit" class="waves-effect waves-light btn" materialize [materializeParams]="['Профайл успішно оновлений',4000]" [materializeActions]="profileActions">Зберегти</button>
+      </div>
+    </form>
+  </div>
+</div>

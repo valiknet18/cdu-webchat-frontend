@@ -39,6 +39,6 @@ export class GroupsListComponent implements OnInit {
   }
 
   onDelete(group) {
-    this.adminSocketService.deleteGroup(group)
+    this.adminSocketService.deleteGroup(group);
   }
 }

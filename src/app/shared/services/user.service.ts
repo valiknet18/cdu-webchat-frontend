@@ -8,10 +8,11 @@ import { Group } from '../models/group';
 
 @Injectable()
 export class UserService {
-  private user = new BehaviorSubject<User>(null);
+  private user = new BehaviorSubject<User|null>(null);
   private users = new BehaviorSubject<Array<User>>(null);
   private joinedToRoom = new BehaviorSubject<Boolean>(false);
   private groups = new BehaviorSubject<Array<Group>>(null);
+  isLoggedIn: boolean = false;
 
   constructor(private cookieService: CookieService) {
     console.log('in user');

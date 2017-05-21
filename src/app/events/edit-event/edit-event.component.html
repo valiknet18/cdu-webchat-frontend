@@ -1,0 +1,16 @@
+<div class="row block-wrapper">
+  <div class="col s12 m12">
+    <div class="card-panel">
+      <div class="main-title">
+        <h3>Редагування консультації</h3>
+      </div>
+      <div>
+        <app-event-form [event]="event" (onSubmit)="onEditEvent($event)"></app-event-form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div materialize [materializeParams]="['Консультація успішно оновлена', 4000]" [materializeActions]="editEventActions">
+</div>

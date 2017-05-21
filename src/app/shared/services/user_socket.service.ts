@@ -38,6 +38,7 @@ export class UserSocketService implements SocketListeners {
       let user = Object.assign(new User(), attributes['user']);
 
       self.userService.getUser().next(user);
+      self.userService.isLoggedIn = true;
       self.authStatusSubject.next({
         'success': 'Користувач успішно зареєстрований'
       });
@@ -52,6 +53,7 @@ export class UserSocketService implements SocketListeners {
       let user = Object.assign(new User(), attributes['user']);
 
       self.userService.getUser().next(user);
+      self.userService.isLoggedIn = true;
       self.authStatusSubject.next({
         'success': 'Користувач успішно авторизований'
       });
@@ -64,7 +66,7 @@ export class UserSocketService implements SocketListeners {
       console.log(attributes['user']);
 
       let user = Object.assign(new User(), attributes['user']);
-
+      self.userService.isLoggedIn = true;
       self.userService.getUser().next(user);
     });
 
@@ -120,16 +122,26 @@ export class UserSocketService implements SocketListeners {
    * @returns {BehaviorSubject<User>}
    */
   getCurrentUser() {
-    this.socketService.emit("current_user");
+    this.socketService.emit('current_user');
 
     return this.userService.getUser();
   }
 
   getUsers() {
-    this.socketService.emit("get_users");
+    this.socketService.emit('get_users');
   }
 
   getGroups() {
     this.socketService.emit('get_groups');
+  }
+
+  updateUserProfile(user: User) {
+    this.socketService.emit('update_profile', {
+      first_name: user.first_name,
+      last_name: user.last_name,
+      username: user.username,
+      email: user.email,
+      password: user.password
+    });
   }
 }

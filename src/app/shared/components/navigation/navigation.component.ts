@@ -3,6 +3,7 @@ import {UserSocketService} from "../../services/user_socket.service";
 import {User} from "../../models/user";
 import {CookieService} from "angular2-cookie/services/cookies.service";
 import {UserService} from "../../services/user.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'main-navigation',
@@ -16,7 +17,11 @@ export class NavigationComponent implements OnInit {
   isAuthorized: Boolean = false;
   user: User = null;
 
-  constructor(private userSocketService: UserSocketService, private userService: UserService) {}
+  constructor(
+    private userSocketService: UserSocketService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     const self = this;
@@ -42,5 +47,6 @@ export class NavigationComponent implements OnInit {
   onLogout(): void {
     this.userService.logout();
     this.userService.getUser().next(null);
+    window.location.reload();
   }
 }

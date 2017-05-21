@@ -1,0 +1,54 @@
+<div class="row block-wrapper">
+  <div class="col s12 m12">
+    <div class="card-panel">
+      <div class="main-title">
+        <h3>Список консультацій</h3>
+      </div>
+      <div class="search-area">
+        <form class="col s12 search-consultation" ngNoForm>
+          <div class="row search-form">
+            <div class="input-field col s8">
+              <i class="material-icons prefix">search</i>
+              <input id="search" type="text" (keyup)="onFilterConsultation(filteredValue)" [(ngModel)]="filteredValue">
+              <label for="search">Пошук</label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="users-list">
+        <table class="list-of-elements">
+          <thead>
+          <tr>
+            <th>Назва</th>
+            <th>Дата початку</th>
+            <th>Викладач</th>
+            <th>Посилання до кімнати</th>
+            <th>Управління</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let consultation of filteredEvents">
+            <td>{{ consultation.name }}</td>
+            <td>{{ consultation.start_at | date:'medium' }}</td>
+            <td>{{ consultation.teacher?.first_name }} {{ consultation.teacher?.last_name }}</td>
+            <td>
+              <a [routerLink]="['/chat', consultation.room.id]">Перейти до кімнати</a>
+            </td>
+            <td>
+              <i materialize="tooltip" class="material-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="Редагувати" [routerLink]="['/events', consultation.id, 'edit']">edit</i>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large waves-effect waves-light teal" routerLink="/events/create">
+    <i class="large material-icons">add</i>
+  </a>
+</div>

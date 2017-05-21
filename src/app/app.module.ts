@@ -18,6 +18,12 @@ import { SharedModule } from './shared/shared.module';
 import { MainComponent } from './shared/layouts/main/main.component';
 import { ChatComponent } from './shared/layouts/chat/chat.component';
 import { AdminComponent } from './shared/layouts/admin/admin.component';
+import { EventsListComponent } from './events/events-list/events-list.component';
+import { CreateEventComponent } from './events/create-event/create-event.component';
+import { EditEventComponent } from './events/edit-event/edit-event.component';
+import { EventFormComponent } from './events/event-form/event-form.component';
+import { DateTimePickerModule } from 'ng-pick-datetime';
+import { SettingsComponent } from './profile/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +35,12 @@ import { AdminComponent } from './shared/layouts/admin/admin.component';
     FooterComponent,
     MainComponent,
     ChatComponent,
-    AdminComponent
+    AdminComponent,
+    EventsListComponent,
+    CreateEventComponent,
+    EditEventComponent,
+    EventFormComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +49,8 @@ import { AdminComponent } from './shared/layouts/admin/admin.component';
     RouterModule.forRoot(routes),
     MaterializeModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    DateTimePickerModule
   ],
   exports: [
     SharedModule
