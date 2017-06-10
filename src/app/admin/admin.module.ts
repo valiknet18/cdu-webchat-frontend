@@ -14,6 +14,7 @@ import { CreateGroupComponent } from './groups/create-group/create-group.compone
 import { EditGroupComponent } from './groups/edit-group/edit-group.component';
 import { GroupFormComponent } from './groups/group-form/group-form.component';
 import { ConsultationsListComponent } from './consultations/consultations-list/consultations-list.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ConsultationsListComponent } from './consultations/consultations-list/c
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterializeModule
+    MaterializeModule,
+    SharedModule
   ],
   exports: [
     RouterModule

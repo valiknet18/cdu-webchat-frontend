@@ -56,6 +56,9 @@ export class RoomSocketService implements SocketListeners {
     this.socketService.emit('send_message_to_room', message);
   }
 
+  /**
+   * @deprecated
+   */
   getRooms() {
     this.socketService.emit('get_rooms');
   }

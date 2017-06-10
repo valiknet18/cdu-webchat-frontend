@@ -8,9 +8,14 @@ import {Room} from "../../shared/models/room";
 export class RoomsComponent {
   @Input() rooms: Room[];
   @Output() selectRoom: EventEmitter<number> = new EventEmitter();
+  @Output() closePopup = new EventEmitter();
 
   onSelectRoom(room: Room) {
     console.log(room);
     this.selectRoom.next(room.id);
+  }
+
+  onClosePopup() {
+    this.closePopup.emit();
   }
 }

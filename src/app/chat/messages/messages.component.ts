@@ -3,7 +3,14 @@ import {Message} from "../../shared/models/message";
 
 @Component({
   selector: 'messages',
-  templateUrl: './messages.component.html'
+  templateUrl: './messages.component.html',
+  styles: [
+      `
+      .preloader-area {
+        margin-top: 50px
+      }
+    `
+  ]
 })
 export class MessagesComponent implements OnInit {
   @Input() messages?: Message[] = [];

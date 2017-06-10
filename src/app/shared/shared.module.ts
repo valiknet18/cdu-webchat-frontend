@@ -9,11 +9,25 @@ import { AdminSocketService } from './services/admin-socket.service';
 import { EventSocketService } from './services/event_socket.service';
 import { EventService } from './services/event.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [],
-  imports: [],
-  exports: [],
+  declarations: [
+    NavigationComponent,
+    FooterComponent
+  ],
+  imports: [
+    CommonModule,
+    RouterModule
+  ],
+  exports: [
+    RouterModule,
+    NavigationComponent,
+    FooterComponent
+  ],
   providers: [
     UserService,
     UserSocketService,

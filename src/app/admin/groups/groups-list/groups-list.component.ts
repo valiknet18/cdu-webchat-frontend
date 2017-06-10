@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { AdminService } from '../../../shared/services/admin.service';
 import { AdminSocketService } from '../../../shared/services/admin-socket.service';
 import { Group } from '../../../shared/models/group';
+import { MaterializeAction } from 'angular2-materialize';
 
 @Component({
   selector: 'app-groups-list',
@@ -12,6 +13,7 @@ export class GroupsListComponent implements OnInit {
   groups: Array<Group> = [];
   filteredGroups: Array<Group> = [];
   filteredValue = '';
+  deleteGroupActions = new EventEmitter<MaterializeAction|string>();
   constructor(
     private adminService: AdminService,
     private adminSocketService: AdminSocketService
@@ -40,5 +42,6 @@ export class GroupsListComponent implements OnInit {
 
   onDelete(group) {
     this.adminSocketService.deleteGroup(group);
+    this.deleteGroupActions.emit('toast');
   }
 }

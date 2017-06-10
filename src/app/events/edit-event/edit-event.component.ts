@@ -12,7 +12,7 @@ import { MaterializeAction } from 'angular2-materialize';
 })
 export class EditEventComponent implements OnInit, OnDestroy {
   private sub: any;
-  private event: Event = new Event();
+  event: Event = new Event();
 
   editEventActions = new EventEmitter<MaterializeAction|string>();
 

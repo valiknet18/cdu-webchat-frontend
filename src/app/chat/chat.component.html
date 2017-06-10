@@ -70,9 +70,11 @@
 <!-- Modal-one Structure -->
 <div id="modal1" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="roomsModal">
   <div class="modal-content">
-    <rooms [rooms]="rooms" (selectRoom)="onSelectRoom($event)"></rooms>
+    <rooms [rooms]="rooms" (selectRoom)="onSelectRoom($event)" (closePopup)="onCloseSelectRooms()"></rooms>
   </div>
 </div>
+
+
 <!-- Modal-two Structure -->
 <div id="modal2" class="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="createRoomModal">
   <div class="modal-content">
@@ -86,3 +88,7 @@
     <app-invite-users-form [channelGroups]="groups" [allGroups]="allGroups" (closeInviteUsers)="onCloseInviteUsersPopup()" (selectUsers)="onSelectUsersForInvite($event)"></app-invite-users-form>
   </div>
 </div>
+
+<div materialize [materializeParams]="['Кімната успішно створена', 4000]" [materializeActions]="createRoomAction"></div>
+<div materialize [materializeParams]="['Користувачі успішно запрошені до кімнати', 4000]" [materializeActions]="inviteUsersAction"></div>
+<div materialize [materializeParams]="['Кімната успішно вибрана', 4000]" [materializeActions]="selectRoomAction"></div>

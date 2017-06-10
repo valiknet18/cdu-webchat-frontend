@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { AdminSocketService } from '../../../shared/services/admin-socket.service';
 import { AdminService } from '../../../shared/services/admin.service';
 import { User } from '../../../shared/models/user';
+import { MaterializeAction } from 'angular2-materialize';
 
 @Component({
   selector: 'app-users-list',
@@ -12,6 +13,7 @@ export class UsersListComponent implements OnInit {
   users: Array<User>;
   filteredUsers: Array<User> = [];
   filteredValue = '';
+  deleteUserActions = new EventEmitter<MaterializeAction|string>();
   constructor(
     private adminSocketService: AdminSocketService,
     private adminService: AdminService
@@ -40,5 +42,6 @@ export class UsersListComponent implements OnInit {
 
   onDelete(user: User) {
     this.adminSocketService.deleteUser(user.id);
+    this.deleteUserActions.emit('toast');
   }
 }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { AdminSocketService } from '../../../shared/services/admin-socket.service';
 import { Router } from '@angular/router';
+import { MaterializeAction } from 'angular2-materialize';
 
 @Component({
   selector: 'app-create-group',
@@ -8,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-group.component.scss']
 })
 export class CreateGroupComponent implements OnInit {
+  createGroupActions = new EventEmitter<MaterializeAction|string>();
 
   constructor(
     private adminSocketService: AdminSocketService,
@@ -21,6 +23,7 @@ export class CreateGroupComponent implements OnInit {
     console.log('New group creating');
 
     this.adminSocketService.createGroup(group);
+    this.createGroupActions.emit('toast');
     this.router.navigate(['/admin/groups']);
   }
 }

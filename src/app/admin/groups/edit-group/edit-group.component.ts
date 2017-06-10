@@ -1,8 +1,9 @@
-import { Component, group, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, group, OnDestroy, OnInit } from '@angular/core';
 import { AdminSocketService } from '../../../shared/services/admin-socket.service';
 import { ActivatedRoute } from '@angular/router';
 import { Group } from '../../../shared/models/group';
 import { AdminService } from '../../../shared/services/admin.service';
+import { MaterializeAction } from 'angular2-materialize';
 
 @Component({
   selector: 'app-edit-group',
@@ -12,6 +13,7 @@ import { AdminService } from '../../../shared/services/admin.service';
 export class EditGroupComponent implements OnInit, OnDestroy {
   private sub: any;
   group: Group = new Group();
+  editGroupActions = new EventEmitter<MaterializeAction|string>();
 
   constructor(
     private route: ActivatedRoute,
@@ -41,5 +43,6 @@ export class EditGroupComponent implements OnInit, OnDestroy {
     group['id'] = this.group.id;
 
     this.adminSocketService.editGroup(group);
+    this.editGroupActions.emit('toast');
   }
 }

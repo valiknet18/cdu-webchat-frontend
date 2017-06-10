@@ -1,8 +1,9 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { UserSocketService } from "../shared/services/user_socket.service";
 import { User } from "../shared/models/user";
 import {Router} from "@angular/router";
+import { MaterializeAction } from 'angular2-materialize';
 
 @Component({
   selector: 'login-page',
@@ -16,6 +17,8 @@ export class LoginComponent {
   errorMessage: string;
   successMessage: string;
   user: User;
+  loginAction = new EventEmitter<MaterializeAction|string>();
+  loginErrorAction = new EventEmitter<MaterializeAction|string>();
 
   constructor(private fb: FormBuilder, private userSocketService: UserSocketService, private router: Router) {
       this.createForm();
@@ -47,14 +50,16 @@ export class LoginComponent {
 
           if ('error' in attributes) {
             self.errorMessage = attributes['error'];
+            self.loginErrorAction.emit('toast');
           }
 
           if ('success' in attributes) {
             self.successMessage = attributes['success'];
+            self.loginAction.emit('toast');
 
             setTimeout(function () {
-              self.router.navigate(['/'])
-            }, 2000)
+              self.router.navigate(['/']);
+            }, 500);
           }
         },
         (error) => {

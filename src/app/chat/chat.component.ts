@@ -31,6 +31,11 @@ export class ChatComponent implements OnInit, OnDestroy {
   inviteUsersModal = new EventEmitter<string | MaterializeAction>();
   isJoinedToRoom: Boolean = false;
   allUsers: User[];
+  toastMessage: string;
+
+  selectRoomAction = new EventEmitter<string | MaterializeAction>();
+  createRoomAction = new EventEmitter<string | MaterializeAction>();
+  inviteUsersAction = new EventEmitter<string | MaterializeAction>();
 
   private sub: any;
 
@@ -42,6 +47,7 @@ export class ChatComponent implements OnInit, OnDestroy {
               private router: Router) {
     this.userSocketService.getCurrentUser();
     this.userSocketService.getGroups();
+    this.userSocketService.getUserRooms();
   }
 
   ngOnInit() {
@@ -84,9 +90,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   getRooms() {
     let self = this;
 
-    this.roomSocketService.getRooms();
-
-    this.roomService.getRooms().subscribe(
+    this.userService.getUserRooms().subscribe(
       (rooms?: Array<Room>) => {
         if (!rooms) {
           return false;
@@ -142,10 +146,10 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   onSelectRoom(room_id: number) {
+    this.roomsModal.emit({action: 'modal', params: ['close']});
+    this.selectRoomAction.emit('toast');
     this.router.navigate(['/chat', room_id]);
     this.roomSocketService.selectRoom(room_id);
-
-    this.roomsModal.emit({action: 'modal', params: ['close']});
   }
 
   onSendMessage(messageForm: Object) {
@@ -154,6 +158,9 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.roomSocketService.sendMessage(messageForm);
   }
 
+  /**
+   * @deprecated
+   */
   onJoinToRoom() {
     this.roomSocketService.joinToRoom(this.room.id);
     this.userService.isJoinedToRoom().next(true);
@@ -174,6 +181,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   onCreateRoom(room) {
     this.roomSocketService.createRoom(room.name);
     this.createRoomModal.emit({action: 'modal', params: ['close']});
+    this.createRoomAction.emit('toast');
   }
 
   onCloseRoomForm() {
@@ -191,9 +199,12 @@ export class ChatComponent implements OnInit, OnDestroy {
       groupIds.push(group.id);
     }
 
-    console.log('before send invite');
-
     this.roomSocketService.inviteGroups(this.room.id, groupIds);
     this.inviteUsersModal.emit({action: 'modal', params: ['close']});
+    this.inviteUsersAction.emit('toast');
+  }
+
+  onCloseSelectRooms() {
+    this.roomsModal.emit({action: 'modal', params: ['close']});
   }
 }

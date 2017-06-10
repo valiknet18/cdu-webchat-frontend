@@ -16,6 +16,7 @@ import { JoinToRoomFormComponent } from './join-to-room-form/join-to-room-form.c
 import { CreateRoomFormComponent } from './create-room-form/create-room-form.component';
 import { InviteUsersFormComponent } from './invite-users-form/invite-users-form.component';
 import { SelectRoomsComponent } from './select-rooms/select-rooms.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { SelectRoomsComponent } from './select-rooms/select-rooms.component';
     JoinToRoomFormComponent,
     CreateRoomFormComponent,
     InviteUsersFormComponent,
-    SelectRoomsComponent
+    SelectRoomsComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +39,7 @@ import { SelectRoomsComponent } from './select-rooms/select-rooms.component';
     ReactiveFormsModule,
     MaterializeModule,
     RouterModule.forChild(routes),
+    SharedModule
   ],
   exports: [
     RouterModule,

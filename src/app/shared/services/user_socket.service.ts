@@ -6,6 +6,7 @@ import { UserService } from "./user.service";
 import { User } from "../models/user";
 import { Subject } from "rxjs";
 import { Group } from '../models/group';
+import { Room } from '../models/room';
 
 @Injectable()
 export class UserSocketService implements SocketListeners {
@@ -38,7 +39,7 @@ export class UserSocketService implements SocketListeners {
       let user = Object.assign(new User(), attributes['user']);
 
       self.userService.getUser().next(user);
-      self.userService.isLoggedIn = true;
+      self.userService.isLoggedIn().next(true);
       self.authStatusSubject.next({
         'success': 'Користувач успішно зареєстрований'
       });
@@ -53,7 +54,7 @@ export class UserSocketService implements SocketListeners {
       let user = Object.assign(new User(), attributes['user']);
 
       self.userService.getUser().next(user);
-      self.userService.isLoggedIn = true;
+      self.userService.isLoggedIn().next(true);
       self.authStatusSubject.next({
         'success': 'Користувач успішно авторизований'
       });
@@ -66,7 +67,8 @@ export class UserSocketService implements SocketListeners {
       console.log(attributes['user']);
 
       let user = Object.assign(new User(), attributes['user']);
-      self.userService.isLoggedIn = true;
+
+      self.userService.isLoggedIn().next(true);
       self.userService.getUser().next(user);
     });
 
@@ -76,8 +78,6 @@ export class UserSocketService implements SocketListeners {
       for (let user of attributes['users']) {
         users.push(Object.assign(new User(), user));
       }
-
-      console.log(users);
 
       self.userService.getUsers().next(users);
     });
@@ -92,6 +92,20 @@ export class UserSocketService implements SocketListeners {
       console.log(groups);
 
       self.userService.getGroups().next(groups);
+    });
+
+    this.socketService.on('receive_user_rooms', (attributes) => {
+      let rooms = [];
+
+      console.log(attributes['rooms']);
+
+      for (let room of attributes['rooms']) {
+        rooms.push(Object.assign(new Room(), room));
+      }
+
+      console.log(rooms);
+
+      self.userService.getUserRooms().next(rooms);
     });
   }
 
@@ -133,6 +147,10 @@ export class UserSocketService implements SocketListeners {
 
   getGroups() {
     this.socketService.emit('get_groups');
+  }
+
+  getUserRooms() {
+    this.socketService.emit('get_user_rooms');
   }
 
   updateUserProfile(user: User) {

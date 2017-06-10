@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { AdminSocketService } from '../../../shared/services/admin-socket.service';
 import { Router, RouterState } from '@angular/router';
+import { MaterializeAction } from 'angular2-materialize';
 
 @Component({
   selector: 'app-create-user',
@@ -8,6 +9,7 @@ import { Router, RouterState } from '@angular/router';
   styleUrls: ['./create-user.component.scss']
 })
 export class CreateUserComponent implements OnInit {
+  createUserActions = new EventEmitter<MaterializeAction|string>();
 
   constructor(
     private adminSocketService: AdminSocketService,
@@ -25,6 +27,7 @@ export class CreateUserComponent implements OnInit {
       .adminSocketService
       .createUser(user);
 
+    this.createUserActions.emit('toast');
     this.router.navigate(['/admin/users']);
   }
 }

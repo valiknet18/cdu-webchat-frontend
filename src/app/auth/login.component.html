@@ -2,12 +2,6 @@
   <h1>Авторизація</h1>
 
   <div class="row">
-    <div class="error-message" *ngIf="errorMessage !== ''">
-      {{ errorMessage }}
-    </div>
-    <div class="success-message" *ngIf="successMessage !== ''">
-      {{ successMessage }}
-    </div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="col s12 row">
       <div class="row">
         <div class="input-field col s6">
@@ -48,3 +42,6 @@
     </form>
   </div>
 </div>
+
+<div materialize [materializeParams]="['Ви успішно авторизовані в системі', 4000]" [materializeActions]="loginAction"></div>
+<div materialize [materializeParams]="['Під час авторизації сталася помилка, можливо ви ввели не вірні дані', 4000]" [materializeActions]="loginErrorAction"></div>

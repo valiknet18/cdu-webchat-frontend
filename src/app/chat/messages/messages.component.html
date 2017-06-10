@@ -1,7 +1,25 @@
-<ul class="media-list">
-  <message *ngFor="let message of messages" [message]="message"></message>
-</ul>
+<div *ngIf="!messages" class="preloader-area">
+  <div class="preloader-wrapper small active center">
+    <div class="spinner-layer spinner-green-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div>
+      <div class="gap-patch">
+        <div class="circle"></div>
+      </div>
+      <div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<div *ngIf="messages?.length < 1">
-  <p>В цьому каналі ще немає ні одного повідомлення</p>
+<div *ngIf="messages">
+  <ul class="media-list">
+    <message *ngFor="let message of messages" [message]="message"></message>
+  </ul>
+
+  <div *ngIf="messages.length == 0">
+    <p>В цьому каналі ще немає ні одного повідомлення</p>
+  </div>
 </div>

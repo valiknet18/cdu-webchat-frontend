@@ -6,8 +6,6 @@ import { RouterModule } from '@angular/router';
 import { MaterializeModule } from 'angular2-materialize';
 import { routes } from './app.routes';
 
-import { NavigationComponent } from './shared/components/navigation/navigation.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './auth/login.component';
@@ -28,11 +26,9 @@ import { SettingsComponent } from './profile/settings/settings.component';
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
     IndexComponent,
     LoginComponent,
     RegistrationComponent,
-    FooterComponent,
     MainComponent,
     ChatComponent,
     AdminComponent,
@@ -46,7 +42,7 @@ import { SettingsComponent } from './profile/settings/settings.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { useHash: true }),
     MaterializeModule,
     ReactiveFormsModule,
     SharedModule,

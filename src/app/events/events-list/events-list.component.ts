@@ -10,6 +10,7 @@ import { EventSocketService } from '../../shared/services/event_socket.service';
 })
 export class EventsListComponent implements OnInit {
   events: Array<Event>;
+  filterValue: string;
   filteredEvents: Array<Event>;
 
   constructor(

@@ -12,10 +12,21 @@ export class UserService {
   private users = new BehaviorSubject<Array<User>>(null);
   private joinedToRoom = new BehaviorSubject<Boolean>(false);
   private groups = new BehaviorSubject<Array<Group>>(null);
-  isLoggedIn: boolean = false;
+  private rooms = new BehaviorSubject<Array<Room>>(null);
+  private isLogged = new Subject<boolean>();
 
-  constructor(private cookieService: CookieService) {
-    console.log('in user');
+  constructor(private cookieService: CookieService) { }
+
+  checkAuthToken() {
+    return this.cookieService.get('token');
+  }
+
+  /**
+   * @deprecated
+   * @returns {Subject<boolean>}
+   */
+  isLoggedIn() {
+    return this.isLogged;
   }
 
   getUser() {
@@ -60,5 +71,9 @@ export class UserService {
 
   getGroups() {
     return this.groups;
+  }
+
+  getUserRooms() {
+    return this.rooms;
   }
 }

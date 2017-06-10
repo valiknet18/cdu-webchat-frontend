@@ -12,18 +12,18 @@
       </ul>
       <ul id="nav-mobile-auth" class="right hide-on-med-and-down" *ngIf="isAuthorized">
         <li>
-          <a href="" routerLink="/admin">Адмінка</a>
+          <a href="" routerLink="/admin" *ngIf="user?.role == 'admin'">Адміністративна зона</a>
         </li>
         <li>
           <a routerLink="/profile/settings">Настройки</a>
         </li>
         <li>
-          <a [routerLink]="['/events']">Консультації</a>
+          <a [routerLink]="['/events']" *ngIf="user?.role != 'admin'">Консультації</a>
         </li>
-        <li *ngIf="!user?.last_selected_room" >
+        <li *ngIf="!user?.last_selected_room && user?.role != 'admin'">
           <a [routerLink]="['/chat']" routerLinkActive="active">Чат</a>
         </li>
-        <li *ngIf="user?.last_selected_room" >
+        <li *ngIf="user?.last_selected_room && user?.role != 'admin'">
           <a [routerLink]="['/chat', user?.last_selected_room]" routerLinkActive="active">Чат</a>
         </li>
         <li (click)="onLogout()">

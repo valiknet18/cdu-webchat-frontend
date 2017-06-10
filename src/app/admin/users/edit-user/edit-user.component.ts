@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AdminSocketService } from '../../../shared/services/admin-socket.service';
 import { AdminService } from '../../../shared/services/admin.service';
 import { User } from '../../../shared/models/user';
+import { MaterializeAction } from 'angular2-materialize';
 
 @Component({
   selector: 'app-edit-user',
@@ -12,6 +13,7 @@ import { User } from '../../../shared/models/user';
 export class EditUserComponent implements OnInit, OnDestroy {
   private sub: any;
   user: User = new User();
+  editUserActions = new EventEmitter<MaterializeAction|string>();
 
   constructor(
     private route: ActivatedRoute,
@@ -40,18 +42,10 @@ export class EditUserComponent implements OnInit, OnDestroy {
   }
 
   onSubmitUser(user) {
-
     user['id'] = this.user.id;
     user = Object.assign({}, user, new User());
 
-    console.log(user);
-
-    try {
-      this
-        .adminSocketService
-        .editUser(user);
-    } catch (e) {
-      console.log(e);
-    }
+    this.adminSocketService.editUser(user);
+    this.editUserActions.emit('toast');
   }
 }

@@ -11,7 +11,7 @@ import { UserSocketService } from '../../shared/services/user_socket.service';
   styleUrls: ['./select-rooms.component.scss']
 })
 export class SelectRoomsComponent implements OnInit {
-  rooms: Room[];
+  rooms: Room[] = [];
 
   constructor(
     private userService: UserService,
@@ -19,6 +19,7 @@ export class SelectRoomsComponent implements OnInit {
     private router: Router
   ) {
     this.userSocketService.getCurrentUser();
+    this.userSocketService.getUserRooms();
   }
 
   ngOnInit() {
@@ -26,19 +27,15 @@ export class SelectRoomsComponent implements OnInit {
   }
 
   getRooms() {
-    this.userService.getUser().subscribe(
-      (user?: User) => {
-        if (!user) {
+    this.userService.getUserRooms().subscribe(
+      (rooms?: Room[]) => {
+        if (!rooms) {
           return false;
         }
 
-        this.rooms = user.group.rooms;
+        console.log(rooms);
 
-        if (!user.last_selected_room) {
-          return false;
-        }
-
-        this.onSelectRoom(user.last_selected_room);
+        this.rooms = rooms;
       }
     );
   }
