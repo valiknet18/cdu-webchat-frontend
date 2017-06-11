@@ -47,7 +47,7 @@
 </div>
 
 
-<div class="fixed-action-btn">
+<div class="fixed-action-btn" *ngIf="user?.role == 'teacher'">
   <a class="btn-floating btn-large waves-effect waves-light teal" routerLink="/events/create">
     <i class="large material-icons">add</i>
   </a>

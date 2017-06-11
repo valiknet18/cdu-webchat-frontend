@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../shared/services/event.service';
 import { Event } from '../../shared/models/event';
 import { EventSocketService } from '../../shared/services/event_socket.service';
+import { User } from '../../shared/models/user';
+import { UserService } from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-events-list',
@@ -12,8 +14,10 @@ export class EventsListComponent implements OnInit {
   events: Array<Event>;
   filterValue: string;
   filteredEvents: Array<Event>;
+  user: User;
 
   constructor(
+    private userService: UserService,
     private eventService: EventService,
     private eventSocketService: EventSocketService
   ) {
@@ -31,6 +35,16 @@ export class EventsListComponent implements OnInit {
       this.events = events;
       this.filteredEvents = events;
     });
+
+    this.userService.getUser().subscribe(
+      (user?: User) => {
+        if (!user) {
+          return false;
+        }
+
+        this.user = user;
+      }
+    );
   }
 
   onFilterConsultation(value) {

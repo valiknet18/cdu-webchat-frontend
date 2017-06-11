@@ -7,6 +7,7 @@ import {Room} from "../../shared/models/room";
 })
 export class RoomsComponent {
   @Input() rooms: Room[];
+  @Input() isPopup: boolean = true;
   @Output() selectRoom: EventEmitter<number> = new EventEmitter();
   @Output() closePopup = new EventEmitter();
 

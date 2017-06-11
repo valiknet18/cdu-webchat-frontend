@@ -32,6 +32,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   isJoinedToRoom: Boolean = false;
   allUsers: User[];
   toastMessage: string;
+  user: User;
 
   selectRoomAction = new EventEmitter<string | MaterializeAction>();
   createRoomAction = new EventEmitter<string | MaterializeAction>();
@@ -54,6 +55,16 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.getCurrentRoom();
     this.getRooms();
     this.getMessages();
+
+    this.userService.getUser().subscribe(
+      (user?: User) => {
+        if (!user) {
+          return false;
+        }
+
+        this.user = user;
+      }
+    );
   }
 
   ngOnDestroy() {

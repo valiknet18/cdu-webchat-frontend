@@ -3,6 +3,6 @@
     <room *ngFor="let room of rooms" [room]="room" (changeRoom)="onSelectRoom(room)">{{ room.name }}</room>
   </ul>
 </div>
-<div class="row">
+<div class="row" *ngIf="isPopup">
   <a (click)="onClosePopup()" class="btn btn-success right">Закрити</a>
 </div>
