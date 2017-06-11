@@ -8,7 +8,7 @@
     </div>
     <div class="row">
       <div class="input-field col s6">
-        <input id="start_at" formControlName="start_at" [ngModel]="event.start_at | date: 'short'" [(dateTimePicker)]="event.start_at"
+        <input id="start_at" formControlName="start_at" [ngModel]="event.start_at | date: 'd/M/y, HH:mm'" [(dateTimePicker)]="event.start_at"
                class="picker-input"
                [mode]="'inline'"
                readonly />
