@@ -1,7 +1,9 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter } from '@angular/core';
 import {FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
 import {UserSocketService} from "../shared/services/user_socket.service";
 import {User} from "../shared/models/user";
+import { MaterializeAction } from 'angular2-materialize';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'registration-page',
@@ -16,8 +18,11 @@ export class RegistrationComponent {
   successMessage: string;
   user: User = new User();
 
-  constructor(private fb: FormBuilder, private userSocketService: UserSocketService) {
-    this.createForm()
+  registrationAction = new EventEmitter<MaterializeAction|string>();
+  registrationErrorAction = new EventEmitter<MaterializeAction|string>();
+
+  constructor(private fb: FormBuilder, private userSocketService: UserSocketService, private router: Router) {
+    this.createForm();
   }
 
   private createForm() {
@@ -56,15 +61,17 @@ export class RegistrationComponent {
         self.successMessage = '';
 
         if ('error' in attributes) {
-          self.errorMessage = attributes['error'];
+          this.registrationErrorAction.emit('toast');
         }
 
         if ('success' in attributes) {
-          self.successMessage = attributes['success'];
+          this.registrationAction.emit('toast');
+          this.router.navigate(['/']);
         }
       },
       (error) => {
-        console.log(error)
+        this.registrationErrorAction.emit('toast');
+        console.log(error);
       }
     );
   }

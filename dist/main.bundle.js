@@ -135,7 +135,7 @@ RoomService = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_user_socket_service__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(40);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -217,6 +217,7 @@ var _a, _b, _c;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_user_socket_service__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_models_user__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(40);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegistrationComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -231,11 +232,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var RegistrationComponent = (function () {
-    function RegistrationComponent(fb, userSocketService) {
+    function RegistrationComponent(fb, userSocketService, router) {
         this.fb = fb;
         this.userSocketService = userSocketService;
+        this.router = router;
         this.user = new __WEBPACK_IMPORTED_MODULE_3__shared_models_user__["a" /* User */]();
+        this.registrationAction = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this.registrationErrorAction = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.createForm();
     }
     RegistrationComponent.prototype.createForm = function () {
@@ -259,6 +264,7 @@ var RegistrationComponent = (function () {
         });
     };
     RegistrationComponent.prototype.onSubmit = function () {
+        var _this = this;
         var self = this;
         if (!this.registrationForm.valid) {
             return false;
@@ -269,12 +275,14 @@ var RegistrationComponent = (function () {
             self.errorMessage = '';
             self.successMessage = '';
             if ('error' in attributes) {
-                self.errorMessage = attributes['error'];
+                _this.registrationErrorAction.emit('toast');
             }
             if ('success' in attributes) {
-                self.successMessage = attributes['success'];
+                _this.registrationAction.emit('toast');
+                _this.router.navigate(['/']);
             }
         }, function (error) {
+            _this.registrationErrorAction.emit('toast');
             console.log(error);
         });
     };
@@ -286,10 +294,10 @@ RegistrationComponent = __decorate([
         template: __webpack_require__(587),
         styles: [__webpack_require__(549)]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_user_socket_service__["a" /* UserSocketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_user_socket_service__["a" /* UserSocketService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_user_socket_service__["a" /* UserSocketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_user_socket_service__["a" /* UserSocketService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _c || Object])
 ], RegistrationComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=/var/www/cdu-webchat/cdu-webchat-frontend/src/registration.component.js.map
 
 /***/ }),
@@ -301,7 +309,7 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_event_socket_service__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_models_event__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(40);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateEventComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -359,7 +367,7 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_event_socket_service__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_models_event__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_services_event_service__ = __webpack_require__(78);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditEventComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -713,7 +721,7 @@ MainComponent = __decorate([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_service__ = __webpack_require__(46);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthGuardService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1081,7 +1089,7 @@ var _a, _b;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__services_auth_guard_service__ = __webpack_require__(150);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_navigation_navigation_component__ = __webpack_require__(376);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_footer_footer_component__ = __webpack_require__(375);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_router__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_router__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__angular_common__ = __webpack_require__(45);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SharedModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1182,7 +1190,7 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(369);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_materialize__ = __webpack_require__(367);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_materialize___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular2_materialize__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_routes__ = __webpack_require__(373);
@@ -1467,7 +1475,7 @@ FooterComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_user_socket_service__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(40);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavigationComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2288,7 +2296,7 @@ module.exports = "<div class=\"authorization-page\">\n  <h1>Авторизаці
 /***/ 587:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"r-page\">\n  <h1>Форма реєстрації</h1>\n  <div *ngIf=\"successMessage\">\n    {{ successMessage }}\n  </div>\n  <div *ngIf=\"errorMessage\">\n    {{ errorMessage }}\n  </div>\n  <div class=\"row\">\n    <form [formGroup]=\"registrationForm\" (ngSubmit)=\"onSubmit()\" class=\"col s12 row\">\n      <div class=\"row\">\n        <div class=\"input-field col s6\">\n          <i class=\"material-icons prefix\">account_circle</i>\n          <input id=\"first_name\" formControlName=\"first_name\" type=\"text\" class=\"validate\">\n          <label for=\"first_name\">Ім’я</label>\n\n          <div *ngIf=\"!registrationForm.controls.first_name.valid && registrationForm.controls.first_name.dirty\" class=\"alert alert-danger\">\n            <p *ngIf=\"registrationForm.controls.first_name.errors.required\">\n              Це поле обов’язкове до заповнення\n            </p>\n          </div>\n        </div>\n\n        <div class=\"input-field col s6\">\n          <i class=\"material-icons prefix\">account_circle</i>\n          <input id=\"last_name\" formControlName=\"last_name\">\n          <label for=\"last_name\">Прізвище</label>\n\n          <div *ngIf=\"!registrationForm.controls.last_name.valid && registrationForm.controls.last_name.dirty\" class=\"alert alert-danger\">\n            <p *ngIf=\"registrationForm.controls.last_name.errors.required\">\n              Це поле обов’язково до заповнення\n            </p>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"row\">\n        <div class=\"input-field col s6\">\n          <i class=\"material-icons prefix\">email</i>\n          <input id=\"username\" formControlName=\"username\">\n          <label for=\"username\">Нікнейм:</label>\n\n          <div *ngIf=\"!registrationForm.controls.username.valid && registrationForm.controls.username.dirty\" class=\"alert alert-danger\">\n            <p *ngIf=\"registrationForm.controls.username.errors.required\">\n              Це поле обов’язкове до заповнення\n            </p>\n          </div>\n        </div>\n\n        <div class=\"input-field col s6\">\n          <i class=\"material-icons prefix\">email</i>\n          <input id=\"email\" formControlName=\"email\">\n          <label for=\"email\">Email</label>\n\n          <div *ngIf=\"!registrationForm.controls.email.valid && registrationForm.controls.email.dirty\" class=\"alert alert-danger\">\n            <p *ngIf=\"registrationForm.controls.email.errors.required\">\n              Це поле обов’язкове до заповнення\n            </p>\n\n            <p *ngIf=\"registrationForm.controls.email.errors.pattern\">\n              Email має не вірний формат\n            </p>\n          </div>\n        </div>\n      </div>\n\n\n      <div class=\"row\">\n        <div class=\"input-field col s6\">\n          <i class=\"material-icons prefix\">lock</i>\n          <input id=\"password\" type=\"password\" formControlName=\"password\">\n          <label for=\"password\">Пароль</label>\n\n          <div *ngIf=\"!registrationForm.controls.password.valid && registrationForm.controls.password.dirty\" class=\"alert alert-danger\">\n            <p *ngIf=\"registrationForm.controls.password.errors.required\">\n              Це поле обов’язкове до заповнення\n            </p>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"row\">\n        <div class=\"input-field col s12\">\n          <button type=\"submit\" [disabled]=\"!registrationForm.valid\" class=\"waves-effect waves-light btn\">Зареєструватись</button>\n        </div>\n      </div>\n    </form>\n  </div>\n</div>\n"
+module.exports = "<div class=\"r-page\">\n  <h1>Форма реєстрації</h1>\n  <div class=\"row\">\n    <form [formGroup]=\"registrationForm\" (ngSubmit)=\"onSubmit()\" class=\"col s12 row\">\n      <div class=\"row\">\n        <div class=\"input-field col s6\">\n          <i class=\"material-icons prefix\">account_circle</i>\n          <input id=\"first_name\" formControlName=\"first_name\" type=\"text\" class=\"validate\">\n          <label for=\"first_name\">Ім’я</label>\n\n          <div *ngIf=\"!registrationForm.controls.first_name.valid && registrationForm.controls.first_name.dirty\" class=\"alert alert-danger\">\n            <p *ngIf=\"registrationForm.controls.first_name.errors.required\">\n              Це поле обов’язкове до заповнення\n            </p>\n          </div>\n        </div>\n\n        <div class=\"input-field col s6\">\n          <i class=\"material-icons prefix\">account_circle</i>\n          <input id=\"last_name\" formControlName=\"last_name\">\n          <label for=\"last_name\">Прізвище</label>\n\n          <div *ngIf=\"!registrationForm.controls.last_name.valid && registrationForm.controls.last_name.dirty\" class=\"alert alert-danger\">\n            <p *ngIf=\"registrationForm.controls.last_name.errors.required\">\n              Це поле обов’язково до заповнення\n            </p>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"row\">\n        <div class=\"input-field col s6\">\n          <i class=\"material-icons prefix\">email</i>\n          <input id=\"username\" formControlName=\"username\">\n          <label for=\"username\">Нікнейм:</label>\n\n          <div *ngIf=\"!registrationForm.controls.username.valid && registrationForm.controls.username.dirty\" class=\"alert alert-danger\">\n            <p *ngIf=\"registrationForm.controls.username.errors.required\">\n              Це поле обов’язкове до заповнення\n            </p>\n          </div>\n        </div>\n\n        <div class=\"input-field col s6\">\n          <i class=\"material-icons prefix\">email</i>\n          <input id=\"email\" formControlName=\"email\">\n          <label for=\"email\">Email</label>\n\n          <div *ngIf=\"!registrationForm.controls.email.valid && registrationForm.controls.email.dirty\" class=\"alert alert-danger\">\n            <p *ngIf=\"registrationForm.controls.email.errors.required\">\n              Це поле обов’язкове до заповнення\n            </p>\n\n            <p *ngIf=\"registrationForm.controls.email.errors.pattern\">\n              Email має не вірний формат\n            </p>\n          </div>\n        </div>\n      </div>\n\n\n      <div class=\"row\">\n        <div class=\"input-field col s6\">\n          <i class=\"material-icons prefix\">lock</i>\n          <input id=\"password\" type=\"password\" formControlName=\"password\">\n          <label for=\"password\">Пароль</label>\n\n          <div *ngIf=\"!registrationForm.controls.password.valid && registrationForm.controls.password.dirty\" class=\"alert alert-danger\">\n            <p *ngIf=\"registrationForm.controls.password.errors.required\">\n              Це поле обов’язкове до заповнення\n            </p>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"row\">\n        <div class=\"input-field col s12\">\n          <button type=\"submit\" [disabled]=\"!registrationForm.valid\" class=\"waves-effect waves-light btn\">Зареєструватись</button>\n        </div>\n      </div>\n    </form>\n  </div>\n</div>\n\n\n<div materialize [materializeParams]=\"['Ви успішно зареєстровані в системі', 4000]\" [materializeActions]=\"registrationAction\"></div>\n<div materialize [materializeParams]=\"['Під час реєстрації сталася помилка', 4000]\" [materializeActions]=\"registrationErrorAction\"></div>\n"
 
 /***/ }),
 

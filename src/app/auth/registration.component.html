@@ -1,11 +1,5 @@
 <div class="r-page">
   <h1>Форма реєстрації</h1>
-  <div *ngIf="successMessage">
-    {{ successMessage }}
-  </div>
-  <div *ngIf="errorMessage">
-    {{ errorMessage }}
-  </div>
   <div class="row">
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="col s12 row">
       <div class="row">
@@ -87,3 +81,7 @@
     </form>
   </div>
 </div>
+
+
+<div materialize [materializeParams]="['Ви успішно зареєстровані в системі', 4000]" [materializeActions]="registrationAction"></div>
+<div materialize [materializeParams]="['Під час реєстрації сталася помилка', 4000]" [materializeActions]="registrationErrorAction"></div>
