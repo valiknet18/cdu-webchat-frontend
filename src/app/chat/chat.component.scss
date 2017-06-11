@@ -17,7 +17,7 @@ body{
   .rooms{
     background-color: #0277BD;
     color: #fff;
-
+    height: 106px;
     padding: 0 5px 0;
     text-align: center;
     a{
@@ -48,7 +48,7 @@ body{
   div.chat{
     float: left;
     width: 85%;
-
+    min-height: 569px;
     border: 1px solid #bababa;
     .panel-body{
       overflow: auto;
@@ -98,4 +98,8 @@ body{
 
 .invite-users-modal {
   height: 700px;
+}
+
+.open-rooms-link {
+  cursor: pointer;
 }

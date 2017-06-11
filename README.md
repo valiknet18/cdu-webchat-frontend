@@ -8,7 +8,8 @@
 5. DONE - Fix problems with unicode.
 6. DONE - Teacher and student should see rooms, what related to him.
 7. DONE - Fix permissions - CRITICAL.
-8. After assign user groups to chat room, users list should be updated 
+8. DONE - After assign user groups to chat room, users list should be updated
+9. DONE - Fix chat page
 
 ###For run
 1. Clone this repository

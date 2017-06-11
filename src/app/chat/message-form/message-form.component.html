@@ -2,18 +2,19 @@
   <div class="input-group">
 
     <form [formGroup]="messageForm" (ngSubmit)="onSend()">
-
-      <div id="block1">
-        <input type="text" class="form-control" formControlName="message" placeholder="Введіть повідомлення"/>
-      </div>
-      <div id="block2">
-        <button class="btn btn-info " type="submit">
-          <i class="material-icons">comment</i>
-        </button>
-      </div>
-      <span class="input-group-btn">
+        <div id="block1" class="message-input">
+          <input type="text" class="form-control validate" formControlName="message" placeholder="Введіть повідомлення" (keyup)="onChangeMessage()" />
+        </div>
+        <div id="block2" class="send-button">
+          <button class="btn btn-info " type="submit" [disabled]="!messageForm.valid">
+            <i class="material-icons">comment</i>
+          </button>
+        </div>
+        <span class="input-group-btn">
                               </span>
     </form>
 
   </div>
 </div>
+
+<div materialize [materializeParams]="['Поле з повідомленням обовʼязкове до заповнення', 4000]" [materializeActions]="sendMessageAction"></div>

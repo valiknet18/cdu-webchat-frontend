@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { EventSocketService } from '../../shared/services/event_socket.service';
 import { Event } from '../../shared/models/event';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -28,10 +28,14 @@ export class EditEventComponent implements OnInit, OnDestroy {
       this.eventSocketService.getEvent(+params['id']);
     });
 
+    console.log(1);
+
     this.eventService.getEvent().subscribe((event) => {
       if (!event) {
         return false;
       }
+
+      console.log(event);
 
       this.event = event;
     });

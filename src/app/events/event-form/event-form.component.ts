@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Group } from '../../shared/models/group';
 import { Event } from '../../shared/models/event';
@@ -8,14 +8,15 @@ import { UserSocketService } from '../../shared/services/user_socket.service';
 @Component({
   selector: 'app-event-form',
   templateUrl: './event-form.component.html',
-  styleUrls: ['./event-form.component.scss']
+  styleUrls: ['./event-form.component.scss'],
 })
 export class EventFormComponent implements OnInit, OnChanges {
   @Input() event: Event;
   @Output() onSubmit = new EventEmitter();
+
   form: FormGroup;
   allGroups: Array<Group>;
-  selectedGroups: Array<Group>;
+  selectedGroups: Array<Group> = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -50,15 +51,17 @@ export class EventFormComponent implements OnInit, OnChanges {
       return false;
     }
 
-    this.selectedGroups = [];
+    let selectedGroups = [];
 
     for (let group of this.allGroups) {
       for (let eventGroup of this.event.room.groups) {
         if (group.id === eventGroup.id) {
-          this.selectedGroups.push(group);
+          selectedGroups.push(group);
         }
       }
     }
+
+    this.selectedGroups = selectedGroups;
   }
 
   onSubmitForm() {
