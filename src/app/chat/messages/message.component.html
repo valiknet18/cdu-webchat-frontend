@@ -7,6 +7,10 @@
       <div class="media-body" >
         {{ message.msg }}
         <br />
+        <div *ngIf="message.photos">
+          <img *ngFor="let photo of message.photos | images" src="{{ photo }}" class="message-image" />
+        </div>
+        <br />
         <small class="text-muted">{{ message.author.first_name }} {{ message.author.last_name }} | {{ message.created_at | date:'dd MMMM y, HH:mm:ss' }}</small>
         <hr />
       </div>
