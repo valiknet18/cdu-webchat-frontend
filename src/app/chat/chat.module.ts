@@ -17,6 +17,7 @@ import { CreateRoomFormComponent } from './create-room-form/create-room-form.com
 import { InviteUsersFormComponent } from './invite-users-form/invite-users-form.component';
 import { SelectRoomsComponent } from './select-rooms/select-rooms.component';
 import { SharedModule } from '../shared/shared.module';
+import { ImagesPipe } from './messages/images.pipe';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SharedModule } from '../shared/shared.module';
     CreateRoomFormComponent,
     InviteUsersFormComponent,
     SelectRoomsComponent,
+    ImagesPipe,
   ],
   imports: [
     CommonModule,

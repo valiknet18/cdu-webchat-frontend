@@ -4,6 +4,15 @@
     <form [formGroup]="messageForm" (ngSubmit)="onSend()">
         <div id="block1" class="message-input">
           <input type="text" class="form-control validate" formControlName="message" placeholder="Введіть повідомлення" (keyup)="onChangeMessage()" />
+
+          <div class="images" formArrayName="images">
+            <div *ngFor="let image of messageForm.controls.images.controls; let i=index" class="image-item-container">
+              <input type="text" [formControlName]="i" placeholder="Введіть посилання до картинки" class="form-control" style="display: inline-block; width: 90%;">
+              <i class="material-icons" (click)="onRemoveImage(i)" style="display: inline-block">remove</i>
+            </div>
+
+            <i class="material-icons" (click)="onAddImage()">add</i>
+          </div>
         </div>
         <div id="block2" class="send-button">
           <button class="btn btn-info " type="submit" [disabled]="!messageForm.valid">

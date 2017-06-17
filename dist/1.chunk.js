@@ -134,8 +134,8 @@ var ConsultationsListComponent = (function () {
 ConsultationsListComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-consultations-list',
-        template: __webpack_require__(924),
-        styles: [__webpack_require__(909)]
+        template: __webpack_require__(925),
+        styles: [__webpack_require__(910)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__shared_services_admin_service__["a" /* AdminService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_services_admin_service__["a" /* AdminService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_admin_socket_service__["a" /* AdminSocketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_admin_socket_service__["a" /* AdminSocketService */]) === "function" && _b || Object])
 ], ConsultationsListComponent);
@@ -184,8 +184,8 @@ var CreateGroupComponent = (function () {
 CreateGroupComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-create-group',
-        template: __webpack_require__(925),
-        styles: [__webpack_require__(910)]
+        template: __webpack_require__(926),
+        styles: [__webpack_require__(911)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__shared_services_admin_socket_service__["a" /* AdminSocketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_services_admin_socket_service__["a" /* AdminSocketService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
 ], CreateGroupComponent);
@@ -252,8 +252,8 @@ var EditGroupComponent = (function () {
 EditGroupComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-edit-group',
-        template: __webpack_require__(926),
-        styles: [__webpack_require__(911)]
+        template: __webpack_require__(927),
+        styles: [__webpack_require__(912)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__shared_services_admin_socket_service__["a" /* AdminSocketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_services_admin_socket_service__["a" /* AdminSocketService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__shared_services_admin_service__["a" /* AdminService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_services_admin_service__["a" /* AdminService */]) === "function" && _c || Object])
 ], EditGroupComponent);
@@ -318,8 +318,8 @@ var GroupsListComponent = (function () {
 GroupsListComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-groups-list',
-        template: __webpack_require__(928),
-        styles: [__webpack_require__(912)]
+        template: __webpack_require__(929),
+        styles: [__webpack_require__(913)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__shared_services_admin_service__["a" /* AdminService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_services_admin_service__["a" /* AdminService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_admin_socket_service__["a" /* AdminSocketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_admin_socket_service__["a" /* AdminSocketService */]) === "function" && _b || Object])
 ], GroupsListComponent);
@@ -355,8 +355,8 @@ var IndexComponent = (function () {
 IndexComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-index',
-        template: __webpack_require__(929),
-        styles: [__webpack_require__(913)]
+        template: __webpack_require__(930),
+        styles: [__webpack_require__(914)]
     }),
     __metadata("design:paramtypes", [])
 ], IndexComponent);
@@ -406,8 +406,8 @@ var CreateUserComponent = (function () {
 CreateUserComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-create-user',
-        template: __webpack_require__(930),
-        styles: [__webpack_require__(914)]
+        template: __webpack_require__(931),
+        styles: [__webpack_require__(915)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__shared_services_admin_socket_service__["a" /* AdminSocketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_services_admin_socket_service__["a" /* AdminSocketService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
 ], CreateUserComponent);
@@ -476,8 +476,8 @@ var EditUserComponent = (function () {
 EditUserComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-edit-user',
-        template: __webpack_require__(931),
-        styles: [__webpack_require__(915)]
+        template: __webpack_require__(932),
+        styles: [__webpack_require__(916)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_admin_socket_service__["a" /* AdminSocketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_admin_socket_service__["a" /* AdminSocketService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_admin_service__["a" /* AdminService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_admin_service__["a" /* AdminService */]) === "function" && _c || Object])
 ], EditUserComponent);
@@ -541,8 +541,8 @@ var UsersListComponent = (function () {
 UsersListComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-users-list',
-        template: __webpack_require__(933),
-        styles: [__webpack_require__(917)]
+        template: __webpack_require__(934),
+        styles: [__webpack_require__(918)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__shared_services_admin_socket_service__["a" /* AdminSocketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_services_admin_socket_service__["a" /* AdminSocketService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_admin_service__["a" /* AdminService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_admin_service__["a" /* AdminService */]) === "function" && _b || Object])
 ], UsersListComponent);
@@ -641,8 +641,8 @@ __decorate([
 GroupFormComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-group-form',
-        template: __webpack_require__(927),
-        styles: [__webpack_require__(923)]
+        template: __webpack_require__(928),
+        styles: [__webpack_require__(924)]
     }),
     __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"]) === "function" && _b || Object])
 ], GroupFormComponent);
@@ -729,32 +729,14 @@ __decorate([
 UserFormComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-user-form',
-        template: __webpack_require__(932),
-        styles: [__webpack_require__(916)]
+        template: __webpack_require__(933),
+        styles: [__webpack_require__(917)]
     }),
     __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_admin_service__["a" /* AdminService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_admin_service__["a" /* AdminService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"]) === "function" && _c || Object])
 ], UserFormComponent);
 
 var _a, _b, _c;
 //# sourceMappingURL=/var/www/cdu-webchat/cdu-webchat-frontend/src/user-form.component.js.map
-
-/***/ }),
-
-/***/ 909:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(26)();
-// imports
-
-
-// module
-exports.push([module.i, ".main-title {\n  text-align: center; }\n\n.block-wrapper {\n  margin-top: 20px; }\n\n.search-form {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .search-form > div {\n    margin: 5px auto; }\n\n.list-of-elements i {\n  cursor: pointer; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
 
 /***/ }),
 
@@ -820,7 +802,7 @@ exports = module.exports = __webpack_require__(26)();
 
 
 // module
-exports.push([module.i, ".card-image {\n  text-align: center; }\n\n.admin-main-menu {\n  margin-top: 20px; }\n", ""]);
+exports.push([module.i, ".main-title {\n  text-align: center; }\n\n.block-wrapper {\n  margin-top: 20px; }\n\n.search-form {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .search-form > div {\n    margin: 5px auto; }\n\n.list-of-elements i {\n  cursor: pointer; }\n", ""]);
 
 // exports
 
@@ -838,7 +820,7 @@ exports = module.exports = __webpack_require__(26)();
 
 
 // module
-exports.push([module.i, ".main-title {\n  text-align: center; }\n\n.block-wrapper {\n  margin-top: 20px; }\n\n.search-form {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .search-form > div {\n    margin: 5px auto; }\n\n.list-of-elements i {\n  cursor: pointer; }\n", ""]);
+exports.push([module.i, ".card-image {\n  text-align: center; }\n\n.admin-main-menu {\n  margin-top: 20px; }\n", ""]);
 
 // exports
 
@@ -874,7 +856,7 @@ exports = module.exports = __webpack_require__(26)();
 
 
 // module
-exports.push([module.i, "/deep/ .select-wrapper input.select-dropdown {\n  color: #9e9e9e; }\n", ""]);
+exports.push([module.i, ".main-title {\n  text-align: center; }\n\n.block-wrapper {\n  margin-top: 20px; }\n\n.search-form {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .search-form > div {\n    margin: 5px auto; }\n\n.list-of-elements i {\n  cursor: pointer; }\n", ""]);
 
 // exports
 
@@ -892,6 +874,24 @@ exports = module.exports = __webpack_require__(26)();
 
 
 // module
+exports.push([module.i, "/deep/ .select-wrapper input.select-dropdown {\n  color: #9e9e9e; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 918:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(26)();
+// imports
+
+
+// module
 exports.push([module.i, ".main-title {\n  text-align: center; }\n\n.block-wrapper {\n  margin-top: 20px; }\n\n.search-form {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .search-form > div {\n    margin: 5px auto; }\n\n.list-of-elements i {\n  cursor: pointer; }\n\n.small-avatar {\n  max-width: 80px; }\n\n.search-form {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .search-form > div {\n    margin: 5px auto; }\n", ""]);
 
 // exports
@@ -902,7 +902,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 923:
+/***/ 924:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(26)();
@@ -920,70 +920,70 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 924:
+/***/ 925:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row block-wrapper\">\n  <div class=\"col s12 m12\">\n    <nav>\n      <div class=\"nav-wrapper teal lighten-2\">\n        <div class=\"col s12\">\n          <a href=\"#!\" class=\"breadcrumb\" routerLink=\"/admin\">Адміністративна зона</a>\n          <a href=\"#!\" class=\"breadcrumb\" routerLink=\"/admin/events\">Список консультацій</a>\n        </div>\n      </div>\n    </nav>\n    <div class=\"card-panel\">\n      <div class=\"main-title\">\n        <h3>Список консультацій</h3>\n      </div>\n      <div class=\"search-area\">\n        <form class=\"col s12 search-consultation\" ngNoForm>\n          <div class=\"row search-form\">\n            <div class=\"input-field col s8\">\n              <i class=\"material-icons prefix\">search</i>\n              <input id=\"search\" type=\"text\" (keyup)=\"onFilterConsultation(filteredValue)\" [(ngModel)]=\"filteredValue\">\n              <label for=\"search\">Пошук</label>\n            </div>\n          </div>\n        </form>\n      </div>\n      <div class=\"users-list\">\n        <table class=\"list-of-elements\">\n          <thead>\n          <tr>\n            <th>Назва</th>\n            <th>Дата початку</th>\n            <th>Викладач</th>\n          </tr>\n          </thead>\n\n          <tbody>\n          <tr *ngFor=\"let consultation of filteredEvents\">\n            <td>{{ consultation.name }}</td>\n            <td>{{ consultation.start_at | date:'medium' }}</td>\n            <td>{{ consultation.teacher?.first_name }} {{ consultation.teacher?.last_name }}</td>\n          </tr>\n          </tbody>\n        </table>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
-/***/ 925:
+/***/ 926:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row block-wrapper\">\n  <div class=\"col s12 m12\">\n    <nav>\n      <div class=\"nav-wrapper teal lighten-2\">\n        <div class=\"col s12\">\n          <a href=\"#!\" class=\"breadcrumb\" routerLink=\"/admin\">Адміністративна зона</a>\n          <a href=\"#!\" class=\"breadcrumb\" routerLink=\"/admin/groups\">Список груп</a>\n          <a href=\"#!\" class=\"breadcrumb\" routerLink=\"/admin/groups/create\">Створення нової групи</a>\n        </div>\n      </div>\n    </nav>\n    <div class=\"card-panel\">\n      <div class=\"main-title\">\n        <h3>Створення нової групи</h3>\n      </div>\n\n      <div class=\"user-form\">\n        <app-group-form (onSubmit)=\"onCreateGroup($event)\"></app-group-form>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div materialize [materializeParams]=\"['Навчальна група успішно створена', 4000]\" [materializeActions]=\"createGroupActions\"></div>\n"
 
 /***/ }),
 
-/***/ 926:
+/***/ 927:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row block-wrapper\">\n  <div class=\"col s12 m12\">\n    <nav>\n      <div class=\"nav-wrapper teal lighten-2\">\n        <div class=\"col s12\">\n          <a href=\"#!\" class=\"breadcrumb\" routerLink=\"/admin\">Адміністративна зона</a>\n          <a href=\"#!\" class=\"breadcrumb\" routerLink=\"/admin/groups\">Список груп</a>\n          <a href=\"#!\" class=\"breadcrumb\" routerLink=\"/admin/groups/create\">Редагування групи</a>\n        </div>\n      </div>\n    </nav>\n    <div class=\"card-panel\">\n      <div class=\"main-title\">\n        <h3>Редагування існуючої групи</h3>\n      </div>\n\n      <div class=\"group-form\">\n        <app-group-form [group]=\"group\" (onSubmit)=\"onEditGroup($event)\"></app-group-form>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div materialize [materializeParams]=\"['Навчальна група успішно відредагована', 4000]\" [materializeActions]=\"editGroupActions\"></div>\n"
 
 /***/ }),
 
-/***/ 927:
+/***/ 928:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row\">\n  <form class=\"col s12\" [formGroup]=\"form\" (ngSubmit)=\"onSubmitUser()\">\n    <div class=\"row\">\n      <div class=\"input-field col s6\">\n        <input id=\"name\" type=\"text\" class=\"validate\" formControlName=\"name\" [(ngModel)]=\"group.name\">\n        <label for=\"name\" class=\"\">Назва групи: </label>\n      </div>\n    </div>\n    <button type=\"submit\" class=\"waves-effect waves-light btn\">Зберегти</button>\n  </form>\n</div>\n"
 
 /***/ }),
 
-/***/ 928:
+/***/ 929:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row block-wrapper\">\n  <div class=\"col s12 m12\">\n    <nav>\n      <div class=\"nav-wrapper teal lighten-2\">\n        <div class=\"col s12\">\n          <a href=\"#!\" class=\"breadcrumb\" routerLink=\"/admin\">Адміністративна зона</a>\n          <a href=\"#!\" class=\"breadcrumb\" routerLink=\"/admin/groups\">Список груп</a>\n        </div>\n      </div>\n    </nav>\n    <div class=\"card-panel\">\n      <div class=\"main-title\">\n        <h3>Список груп</h3>\n      </div>\n      <div class=\"search-area\">\n        <form class=\"col s12 search-consultation\" ngNoForm>\n          <div class=\"row search-form\">\n            <div class=\"input-field col s8\">\n              <i class=\"material-icons prefix\">search</i>\n              <input id=\"search\" type=\"text\" (keyup)=\"onFilterGroup(filteredValue)\" [(ngModel)]=\"filteredValue\">\n              <label for=\"search\">Пошук</label>\n            </div>\n          </div>\n        </form>\n      </div>\n      <div class=\"users-list\">\n        <table class=\"list-of-elements\">\n          <thead>\n          <tr>\n            <th>Назва</th>\n            <th>Кількість студентів</th>\n            <th></th>\n          </tr>\n          </thead>\n\n          <tbody>\n          <tr *ngFor=\"let group of filteredGroups\">\n            <td>{{ group.name }}</td>\n            <td>{{ group.students.length }}</td>\n            <td>\n              <i materialize=\"tooltip\" class=\"material-icons tooltipped\" data-position=\"bottom\" data-delay=\"50\" data-tooltip=\"Редагувати\" [routerLink]=\"['/admin/groups', group.id, 'edit']\">edit</i>\n              <i materialize=\"tooltip\" class=\"material-icons tooltipped\" data-position=\"bottom\" data-delay=\"50\" data-tooltip=\"Видалити\" (click)=\"onDelete(group)\">delete</i>\n            </td>\n          </tr>\n          </tbody>\n        </table>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"fixed-action-btn\">\n  <a class=\"btn-floating btn-large waves-effect waves-light teal\" routerLink=\"/admin/groups/create\">\n    <i class=\"large material-icons\">add</i>\n  </a>\n</div>\n\n<div materialize [materializeParams]=\"['Навчальна група успішно видалена', 4000]\" [materializeActions]=\"deleteGroupActions\"></div>\n"
 
 /***/ }),
 
-/***/ 929:
+/***/ 930:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row admin-main-menu\">\n  <div class=\"col s4 m4\">\n    <div class=\"card\">\n      <div class=\"card-image waves-effect waves-block waves-light\">\n        <i class=\"large material-icons\">assignment_ind</i>\n      </div>\n      <div class=\"card-content\">\n        <span class=\"card-title activator grey-text text-darken-4\">Користувачі</span>\n        <p><a href=\"#\" routerLink=\"/admin/users\">Посилання для переходу</a></p>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"col s4 m4\">\n    <div class=\"card\">\n      <div class=\"card-image waves-effect waves-block waves-light\">\n        <i class=\"large material-icons\">supervisor_account</i>\n      </div>\n      <div class=\"card-content\">\n        <span class=\"card-title activator grey-text text-darken-4\">Групи</span>\n        <p><a href=\"#\" routerLink=\"/admin/groups\">Посилання для переходу</a></p>\n      </div>\n    </div>\n  </div>\n\n\n  <div class=\"col s4 m4\">\n    <div class=\"card\">\n      <div class=\"card-image waves-effect waves-block waves-light\">\n        <i class=\"large material-icons\">schedule</i>\n      </div>\n      <div class=\"card-content\">\n        <span class=\"card-title activator grey-text text-darken-4\">Консультації</span>\n        <p><a href=\"#\" routerLink=\"/admin/events\">Посилання для переходу</a></p>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
-/***/ 930:
+/***/ 931:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row block-wrapper\">\n  <div class=\"col s12 m12\">\n    <nav>\n      <div class=\"nav-wrapper teal lighten-2\">\n        <div class=\"col s12\">\n          <a href=\"#!\" class=\"breadcrumb\" routerLink=\"/admin\">Адміністративна зона</a>\n          <a href=\"#!\" class=\"breadcrumb\" routerLink=\"/admin/users\">Список користувачів</a>\n          <a href=\"#!\" class=\"breadcrumb\" routerLink=\"/admin/users/create\">Створення нового користувача</a>\n        </div>\n      </div>\n    </nav>\n    <div class=\"card-panel\">\n      <div class=\"main-title\">\n        <h3>Створення нового користувача</h3>\n      </div>\n\n      <div class=\"user-form\">\n        <app-user-form (submitUser)=\"onSubmitUser($event)\"></app-user-form>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n<div materialize [materializeParams]=\"['Користувач успішно стоворений', 4000]\" [materializeActions]=\"createUserActions\"></div>\n"
 
 /***/ }),
 
-/***/ 931:
+/***/ 932:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row block-wrapper\">\n  <div class=\"col s12 m12\">\n    <nav>\n      <div class=\"nav-wrapper teal lighten-2\">\n        <div class=\"col s12\">\n          <a href=\"#!\" class=\"breadcrumb\" routerLink=\"/admin\">Адміністративна зона</a>\n          <a href=\"#!\" class=\"breadcrumb\" routerLink=\"/admin/users\">Список користувачів</a>\n          <a href=\"#!\" class=\"breadcrumb\" [routerLink]=\"['/admin/users', user.id, 'edit']\">Редагування користувача</a>\n        </div>\n      </div>\n    </nav>\n    <div class=\"card-panel\">\n      <div class=\"main-title\">\n        <h3>Редагування існуючого користувача</h3>\n      </div>\n\n      <div class=\"group-form\">\n        <app-user-form [user]=\"user\" (submitUser)=\"onSubmitUser($event)\"></app-user-form>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div materialize [materializeParams]=\"['Інформація про користувача успішно відредагована', 4000]\" [materializeActions]=\"editUserActions\"></div>\n"
 
 /***/ }),
 
-/***/ 932:
+/***/ 933:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row\">\n  <form class=\"col s12\" [formGroup]=\"form\" (ngSubmit)=\"onSubmitForm()\">\n    <div class=\"row\">\n      <div class=\"input-field col s6\">\n        <input id=\"first-name\" type=\"text\" class=\"validate\" formControlName=\"first_name\" [(ngModel)]=\"user.first_name\">\n        <label for=\"first-name\" class=\"\">Ім’я: </label>\n      </div>\n      <div class=\"input-field col s6\">\n        <input id=\"last-name\" type=\"text\" class=\"validate\" formControlName=\"last_name\" [(ngModel)]=\"user.last_name\">\n        <label for=\"last-name\">Прізвище: </label>\n      </div>\n      <div class=\"input-field col s6\">\n        <input id=\"nik\" type=\"text\" class=\"validate\" formControlName=\"username\" [(ngModel)]=\"user.username\">\n        <label for=\"nik\">Нікнейм: </label>\n      </div>\n      <div class=\"input-field col s6\">\n        <input id=\"email\" type=\"text\" class=\"validate\" formControlName=\"email\" [(ngModel)]=\"user.email\">\n        <label for=\"email\">Email: </label>\n      </div>\n      <div class=\"input-field col s6\">\n        <input id=\"password1\" type=\"password\" class=\"validate\" formControlName=\"password\">\n        <label for=\"password1\">Поточний пароль: </label>\n      </div>\n      <div class=\"input-field col s6\">\n        <select materialize=\"material_select\" class=\"role\" formControlName=\"role\" [(ngModel)]=\"user.role\">\n          <option value=\"\" disabled selected>Виберіть потрібну роль</option>\n          <option value=\"student\">Студент</option>\n          <option value=\"teacher\">Викладач</option>\n          <option value=\"admin\">Адміністратор</option>\n        </select>\n      </div>\n\n      <div class=\"input-field col s6\" *ngIf=\"user.role == 'student'\">\n        <select materialize=\"material_select\" class=\"group\" formControlName=\"group\" [materializeSelectOptions]=\"groups\" [(ngModel)]=\"selectedUserGroup\">\n          <option value=\"\" disabled selected>Виберіть потрібну групу</option>\n          <option *ngFor=\"let group of groups\" [ngValue]=\"group\">{{ group.name }}</option>\n        </select>\n      </div>\n    </div>\n    <div class=\"row\">\n      <button type=\"submit\" class=\"waves-effect waves-light btn\">Зберегти</button>\n    </div>\n  </form>\n</div>\n"
 
 /***/ }),
 
-/***/ 933:
+/***/ 934:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row block-wrapper\">\n  <div class=\"col s12 m12\">\n    <nav>\n      <div class=\"nav-wrapper teal lighten-2\">\n        <div class=\"col s12\">\n          <a href=\"#!\" class=\"breadcrumb\" routerLink=\"/admin\">Адміністративна зона</a>\n          <a href=\"#!\" class=\"breadcrumb\" routerLink=\"/admin/users\">Список користувачів</a>\n        </div>\n      </div>\n    </nav>\n    <div class=\"card-panel\">\n      <div class=\"main-title\">\n        <h3>Список користувачів</h3>\n      </div>\n      <div class=\"search-area\">\n        <form class=\"col s12 search-consultation\" ngNoForm>\n          <div class=\"row search-form\">\n            <div class=\"input-field col s8\">\n              <i class=\"material-icons prefix\">search</i>\n              <input id=\"search\" type=\"text\" (keyup)=\"onFilterUsers(filteredValue)\" [(ngModel)]=\"filteredValue\">\n              <label for=\"search\">Пошук</label>\n            </div>\n          </div>\n        </form>\n      </div>\n      <div class=\"users-list\">\n        <table class=\"list-of-elements\">\n          <thead>\n          <tr>\n            <th></th>\n            <th>Прізвище</th>\n            <th>Ім'я</th>\n            <th>Юзернейм</th>\n            <th>Email</th>\n            <th>Роль</th>\n            <th></th>\n          </tr>\n          </thead>\n\n          <tbody>\n          <tr *ngFor=\"let user of filteredUsers\">\n            <td>\n              <img src=\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGC7WoaSlI0VlFbyrZ-QC-POW4gtGdn2W6oiklNvOXsLWODCgFyqIvG6E\" class=\"small-avatar\">\n            </td>\n            <td>{{ user.last_name }}</td>\n            <td>{{ user.first_name }}</td>\n            <td>{{ user.username }}</td>\n            <td>{{ user.email }}</td>\n            <td>{{ user.role }}</td>\n            <td>\n              <i materialize=\"tooltip\" class=\"material-icons tooltipped\" data-position=\"bottom\" data-delay=\"50\" data-tooltip=\"Редагувати\" [routerLink]=\"['/admin/users/', user.id, 'edit']\">edit</i>\n              <i materialize=\"tooltip\" class=\"material-icons tooltipped\" data-position=\"bottom\" data-delay=\"50\" data-tooltip=\"Видалити\" (click)=\"onDelete(user)\">delete</i>\n            </td>\n          </tr>\n          </tbody>\n        </table>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"fixed-action-btn\">\n  <a class=\"btn-floating btn-large waves-effect waves-light teal\" routerLink=\"/admin/users/create\">\n    <i class=\"large material-icons\">add</i>\n  </a>\n</div>\n\n\n<div materialize [materializeParams]=\"['Користувач успішно видалений', 4000]\" [materializeActions]=\"deleteUserActions\"></div>\n"

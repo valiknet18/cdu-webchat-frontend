@@ -9,10 +9,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chat_routes__ = __webpack_require__(897);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__chat_component__ = __webpack_require__(892);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__messages_messages_component__ = __webpack_require__(905);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__messages_message_component__ = __webpack_require__(904);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__rooms_rooms_component__ = __webpack_require__(907);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__rooms_room_component__ = __webpack_require__(906);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__messages_messages_component__ = __webpack_require__(906);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__messages_message_component__ = __webpack_require__(905);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__rooms_rooms_component__ = __webpack_require__(908);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__rooms_room_component__ = __webpack_require__(907);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__members_members_component__ = __webpack_require__(902);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__members_member_component__ = __webpack_require__(901);
@@ -25,6 +25,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__invite_users_form_invite_users_form_component__ = __webpack_require__(899);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__select_rooms_select_rooms_component__ = __webpack_require__(893);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__shared_shared_module__ = __webpack_require__(366);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__messages_images_pipe__ = __webpack_require__(904);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatModule", function() { return ChatModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -32,6 +33,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -71,6 +73,7 @@ ChatModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_15__create_room_form_create_room_form_component__["a" /* CreateRoomFormComponent */],
             __WEBPACK_IMPORTED_MODULE_16__invite_users_form_invite_users_form_component__["a" /* InviteUsersFormComponent */],
             __WEBPACK_IMPORTED_MODULE_17__select_rooms_select_rooms_component__["a" /* SelectRoomsComponent */],
+            __WEBPACK_IMPORTED_MODULE_19__messages_images_pipe__["a" /* ImagesPipe */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_8__angular_common__["CommonModule"],
@@ -269,8 +272,8 @@ var ChatComponent = (function () {
 ChatComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'chat',
-        template: __webpack_require__(934),
-        styles: [__webpack_require__(918)]
+        template: __webpack_require__(935),
+        styles: [__webpack_require__(919)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5__shared_services_user_socket_service__["a" /* UserSocketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__shared_services_user_socket_service__["a" /* UserSocketService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__shared_services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_services_user_service__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_room_socket_service__["a" /* RoomSocketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_room_socket_service__["a" /* RoomSocketService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_room_service__["a" /* RoomService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_room_service__["a" /* RoomService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* ActivatedRoute */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _f || Object])
 ], ChatComponent);
@@ -354,8 +357,8 @@ var SelectRoomsComponent = (function () {
 SelectRoomsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-select-rooms',
-        template: __webpack_require__(945),
-        styles: [__webpack_require__(922)]
+        template: __webpack_require__(946),
+        styles: [__webpack_require__(923)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__shared_services_user_service__["a" /* UserService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__shared_services_user_socket_service__["a" /* UserSocketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_services_user_socket_service__["a" /* UserSocketService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__shared_services_room_socket_service__["a" /* RoomSocketService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_services_room_socket_service__["a" /* RoomSocketService */]) === "function" && _d || Object])
 ], SelectRoomsComponent);
@@ -435,8 +438,8 @@ __decorate([
 CreateRoomFormComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-create-room-form',
-        template: __webpack_require__(935),
-        styles: [__webpack_require__(919)]
+        template: __webpack_require__(936),
+        styles: [__webpack_require__(920)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"]) === "function" && _a || Object])
 ], CreateRoomFormComponent);
@@ -522,8 +525,8 @@ __decorate([
 InviteUsersFormComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-invite-users-form',
-        template: __webpack_require__(936),
-        styles: [__webpack_require__(920)]
+        template: __webpack_require__(937),
+        styles: [__webpack_require__(921)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"]) === "function" && _a || Object])
 ], InviteUsersFormComponent);
@@ -567,8 +570,8 @@ __decorate([
 JoinToRoomFormComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-join-to-room-form',
-        template: __webpack_require__(937),
-        styles: [__webpack_require__(921)]
+        template: __webpack_require__(938),
+        styles: [__webpack_require__(922)]
     }),
     __metadata("design:paramtypes", [])
 ], JoinToRoomFormComponent);
@@ -607,7 +610,7 @@ __decorate([
 MemberComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'member',
-        template: __webpack_require__(938)
+        template: __webpack_require__(939)
     })
 ], MemberComponent);
 
@@ -644,7 +647,7 @@ __decorate([
 MembersComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'members',
-        template: __webpack_require__(939),
+        template: __webpack_require__(940),
         styles: [
             "\n      .preloader-area {\n        margin-top: 50px\n      }\n    "
         ]
@@ -683,11 +686,19 @@ var MessageFormComponent = (function () {
         this.messageForm = this.formBuilder.group({
             message: ['', [
                     __WEBPACK_IMPORTED_MODULE_1__angular_forms__["Validators"].required
-                ]]
+                ]],
+            images: this.formBuilder.array([])
         });
     };
     MessageFormComponent.prototype.onSend = function () {
         this.sendMessage.next(this.messageForm.value);
+        var control = this.messageForm.controls['images'];
+        if (control.controls.length > 0) {
+            for (var i = 0; i < control.controls.length; i++) {
+                control.removeAt(i);
+            }
+            control.removeAt(0);
+        }
         this.messageForm.reset();
     };
     MessageFormComponent.prototype.onChangeMessage = function () {
@@ -698,6 +709,14 @@ var MessageFormComponent = (function () {
             this.sendMessageAction.emit('toast');
         }
     };
+    MessageFormComponent.prototype.onAddImage = function () {
+        var control = this.messageForm.controls['images'];
+        control.push(this.formBuilder.control(''));
+    };
+    MessageFormComponent.prototype.onRemoveImage = function (position) {
+        var control = this.messageForm.controls['images'];
+        control.removeAt(position);
+    };
     return MessageFormComponent;
 }());
 __decorate([
@@ -707,8 +726,8 @@ __decorate([
 MessageFormComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'message-form',
-        template: __webpack_require__(940),
-        styles: ["\n    .message-input {\n      width: 70%;\n      display: inline-block;\n      margin-left: 18px;\n      margin-top: 14px;\n    }\n    \n    .send-button {\n      width: 20%;\n      display: inline-block;\n    }\n  "]
+        template: __webpack_require__(941),
+        styles: ["\n    .message-input {\n      width: 70%;\n      display: inline-block;\n      margin-left: 18px;\n      margin-top: 14px;\n    }\n    \n    .send-button {\n      width: 20%;\n      display: inline-block;\n    }\n    \n    .image-item-container {\n      width: 70%;\n      display: inline-block;\n    }\n  "]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["FormBuilder"]) === "function" && _a || Object])
 ], MessageFormComponent);
@@ -723,7 +742,38 @@ var _a;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_models_message__ = __webpack_require__(908);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImagesPipe; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var ImagesPipe = (function () {
+    function ImagesPipe() {
+    }
+    ImagesPipe.prototype.transform = function (value, args) {
+        return JSON.parse(value);
+    };
+    return ImagesPipe;
+}());
+ImagesPipe = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+        name: 'images'
+    })
+], ImagesPipe);
+
+//# sourceMappingURL=/var/www/cdu-webchat/cdu-webchat-frontend/src/images.pipe.js.map
+
+/***/ }),
+
+/***/ 905:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_models_message__ = __webpack_require__(909);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -748,7 +798,8 @@ __decorate([
 MessageComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'message',
-        template: __webpack_require__(941)
+        template: __webpack_require__(942),
+        styles: ["\n      .message-image {\n        max-width: 250px;\n        display: inline-block;\n        margin: 2px 10px;\n      }\n  "]
     })
 ], MessageComponent);
 
@@ -757,7 +808,7 @@ var _a;
 
 /***/ }),
 
-/***/ 905:
+/***/ 906:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -787,7 +838,7 @@ __decorate([
 MessagesComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'messages',
-        template: __webpack_require__(942),
+        template: __webpack_require__(943),
         styles: [
             "\n      .preloader-area {\n        margin-top: 50px\n      }\n    "
         ]
@@ -798,7 +849,7 @@ MessagesComponent = __decorate([
 
 /***/ }),
 
-/***/ 906:
+/***/ 907:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -836,7 +887,7 @@ __decorate([
 RoomComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'room',
-        template: __webpack_require__(943)
+        template: __webpack_require__(944)
     })
 ], RoomComponent);
 
@@ -845,7 +896,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 907:
+/***/ 908:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -895,7 +946,7 @@ __decorate([
 RoomsComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'rooms',
-        template: __webpack_require__(944)
+        template: __webpack_require__(945)
     })
 ], RoomsComponent);
 
@@ -904,7 +955,7 @@ var _a;
 
 /***/ }),
 
-/***/ 908:
+/***/ 909:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -919,24 +970,6 @@ var Message = (function () {
 
 /***/ }),
 
-/***/ 918:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(26)();
-// imports
-
-
-// module
-exports.push([module.i, "body .fixed-action-btn {\n  left: 78%;\n  bottom: 13px; }\n\nbody div#modal2.modal.open {\n  width: 450px;\n  height: 210px; }\n\nbody div#modal3.modal.open {\n  width: 450px;\n  height: 700px; }\n\n.chat-page .rooms {\n  background-color: #0277BD;\n  color: #fff;\n  height: 106px;\n  padding: 0 5px 0;\n  text-align: center; }\n  .chat-page .rooms a {\n    color: #fff; }\n    .chat-page .rooms a:hover {\n      text-decoration: underline; }\n  .chat-page .rooms #tabs {\n    padding-top: 5px; }\n  .chat-page .rooms #tabs-two {\n    padding-top: 5px; }\n    .chat-page .rooms #tabs-two .fixed-action-btn {\n      width: 63px; }\n\n.chat-page .panel-heading {\n  color: #fff;\n  background-color: #0277BD;\n  padding: 5px; }\n\n.chat-page .row {\n  margin-bottom: auto; }\n\n.chat-page div.chat {\n  float: left;\n  width: 85%;\n  min-height: 569px;\n  border: 1px solid #bababa; }\n  .chat-page div.chat .panel-body {\n    overflow: auto;\n    height: 425px;\n    padding: 0 18px 0; }\n  .chat-page div.chat .panel-footer {\n    padding: 15px 20px 0; }\n    .chat-page div.chat .panel-footer #block1 {\n      float: left;\n      width: 94%; }\n    .chat-page div.chat .panel-footer #block2 {\n      float: left;\n      width: 6%; }\n      .chat-page div.chat .panel-footer #block2 button {\n        padding: 0 20px 0;\n        border-radius: 60px; }\n        .chat-page div.chat .panel-footer #block2 button:hover {\n          background-color: #ff6d00; }\n\n.chat-page div.online {\n  float: left;\n  width: 15%;\n  border: 1px solid #bababa;\n  text-align: center; }\n  .chat-page div.online .panel-body {\n    overflow: auto;\n    height: 497px;\n    padding: 0 18px 0; }\n\n.footer-panel {\n  height: 87px; }\n\n.invite-users-modal {\n  height: 700px; }\n\n.open-rooms-link {\n  cursor: pointer; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
 /***/ 919:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -945,7 +978,7 @@ exports = module.exports = __webpack_require__(26)();
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "body .fixed-action-btn {\n  left: 78%;\n  bottom: 13px; }\n\nbody div#modal2.modal.open {\n  width: 450px;\n  height: 210px; }\n\nbody div#modal3.modal.open {\n  width: 450px;\n  height: 700px; }\n\n.chat-page .rooms {\n  background-color: #0277BD;\n  color: #fff;\n  height: 106px;\n  padding: 0 5px 0;\n  text-align: center; }\n  .chat-page .rooms a {\n    color: #fff; }\n    .chat-page .rooms a:hover {\n      text-decoration: underline; }\n  .chat-page .rooms #tabs {\n    padding-top: 5px; }\n  .chat-page .rooms #tabs-two {\n    padding-top: 5px; }\n    .chat-page .rooms #tabs-two .fixed-action-btn {\n      width: 63px; }\n\n.chat-page .panel-heading {\n  color: #fff;\n  background-color: #0277BD;\n  padding: 5px; }\n\n.chat-page .row {\n  margin-bottom: auto; }\n\n.chat-page div.chat {\n  float: left;\n  width: 85%;\n  min-height: 569px;\n  border: 1px solid #bababa; }\n  .chat-page div.chat .panel-body {\n    overflow: auto;\n    height: 425px;\n    padding: 0 18px 0; }\n  .chat-page div.chat .panel-footer {\n    padding: 15px 20px 0; }\n    .chat-page div.chat .panel-footer #block1 {\n      float: left;\n      width: 94%; }\n    .chat-page div.chat .panel-footer #block2 {\n      float: left;\n      width: 6%; }\n      .chat-page div.chat .panel-footer #block2 button {\n        padding: 0 20px 0;\n        border-radius: 60px; }\n        .chat-page div.chat .panel-footer #block2 button:hover {\n          background-color: #ff6d00; }\n\n.chat-page div.online {\n  float: left;\n  width: 15%;\n  border: 1px solid #bababa;\n  text-align: center; }\n  .chat-page div.online .panel-body {\n    overflow: auto;\n    height: 497px;\n    padding: 0 18px 0; }\n\n.footer-panel {\n  height: 87px; }\n\n.invite-users-modal {\n  height: 700px; }\n\n.open-rooms-link {\n  cursor: pointer; }\n", ""]);
 
 // exports
 
@@ -999,6 +1032,24 @@ exports = module.exports = __webpack_require__(26)();
 
 
 // module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 923:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(26)();
+// imports
+
+
+// module
 exports.push([module.i, ".main-container {\n  min-height: 500px; }\n", ""]);
 
 // exports
@@ -1009,84 +1060,84 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 934:
+/***/ 935:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"chat-page\">\n\n  <div class=\"row\">\n    <div class=\"col-md-4 online\">\n      <div class=\"panel panel-primary\">\n        <div class=\"panel-heading\">\n          <p>\n            <a [routerLink]=\"['/']\" routerLinkActive=\"active\">\n              <i class=\"material-icons\" style=\"color: #ff6d00;\">fast_rewind</i>\n            </a>\n            <i class=\"material-icons\">perm_identity</i>Користувачі\n          </p>\n        </div>\n        <div class=\"panel-body\">\n          <members [members]=\"members\"></members>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-8 chat\">\n      <div class=\" panel panel-info\">\n        <div class=\"panel-heading\">\n          <p>Історія чату</p>\n        </div>\n        <div class=\"panel-body\">\n          <messages [messages]=\"messages\"></messages>\n        </div>\n        <message-form (sendMessage)=\"onSendMessage($event)\" *ngIf=\"isJoinedToRoom\"></message-form>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"rooms\">\n    <div class=\"panel panel-info footer-panel\">\n      <div class=\"row\">\n        <!--<form materialize class=\"col s12\">-->\n          <div class=\"row\">\n            <!--<div class=\"input-field col s4\" style=\"color: white\">-->\n              <!--<i class=\"material-icons prefix\" style=\"color: white\">search</i>-->\n              <!--<input id=\"icon_prefix\" type=\"text\" class=\"validate\">-->\n              <!--<label for=\"icon_prefix\" style=\"color: white\">Пошук кімнати</label>-->\n            <!--</div>-->\n            <div class=\"input-field col s4\">\n              <div id=\"tabs\">\n                <a (click)=\"openRoomsModal()\" class=\"open-rooms-link\">\n                  <i class=\"material-icons\" >room</i>Кімнати\n                </a>\n              </div>\n            </div>\n            <div class=\"input-field col s2\" *ngIf=\"user?.role == 'teacher'\">\n              <div id=\"tabs-two\">\n                <div class=\"fixed-action-btn horizontal\">\n                  <a class=\"btn-floating btn-large teal\">\n                    <i class=\"large material-icons\">mode_edit</i>\n                  </a>\n                  <ul>\n                    <li><a href=\"#modal2\" class=\"btn-floating orange accent-4\" title=\"Додати кімнату\" (click)=\"openCreateRoomModal()\"><i class=\"material-icons\">playlist_add</i></a></li>\n                    <li><a href=\"#modal3\" class=\"btn-floating green accent-4\" title=\"Додати користувачів\" (click)=\"openInviteUsersModal()\"><i class=\"material-icons\">add</i></a></li>\n                  </ul>\n                </div>\n              </div>\n            </div>\n          </div>\n        <!--</form>-->\n      </div>\n    </div>\n  </div>\n</div>\n\n\n<!-- Modal-one Structure -->\n<div id=\"modal1\" class=\"modal\" materialize=\"modal\" [materializeParams]=\"[{dismissible: false}]\" [materializeActions]=\"roomsModal\">\n  <div class=\"modal-content\">\n    <rooms [rooms]=\"rooms\" (selectRoom)=\"onSelectRoom($event)\" (closePopup)=\"onCloseSelectRooms()\"></rooms>\n  </div>\n</div>\n\n\n<!-- Modal-two Structure -->\n<div id=\"modal2\" class=\"modal\" materialize=\"modal\" [materializeParams]=\"[{dismissible: false}]\" [materializeActions]=\"createRoomModal\">\n  <div class=\"modal-content\">\n    <app-create-room-form (createRoom)=\"onCreateRoom($event)\" (closeForm)=\"onCloseRoomForm()\"></app-create-room-form>\n  </div>\n</div>\n\n<!-- Modal-three Structure -->\n<div id=\"modal3\" class=\"modal invite-users-modal\" materialize=\"modal\" [materializeParams]=\"[{dismissible: false}]\" [materializeActions]=\"inviteUsersModal\">\n  <div class=\"modal-content\">\n    <app-invite-users-form [channelGroups]=\"groups\" [allGroups]=\"allGroups\" (closeInviteUsers)=\"onCloseInviteUsersPopup()\" (selectUsers)=\"onSelectUsersForInvite($event)\"></app-invite-users-form>\n  </div>\n</div>\n\n<div materialize [materializeParams]=\"['Кімната успішно створена', 4000]\" [materializeActions]=\"createRoomAction\"></div>\n<div materialize [materializeParams]=\"['Користувачі успішно запрошені до кімнати', 4000]\" [materializeActions]=\"inviteUsersAction\"></div>\n<div materialize [materializeParams]=\"['Кімната успішно вибрана', 4000]\" [materializeActions]=\"selectRoomAction\"></div>\n"
 
 /***/ }),
 
-/***/ 935:
+/***/ 936:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row\">\n  <form class=\"col s12\" [formGroup]=\"roomForm\" (ngSubmit)=\"onCreateRoom()\">\n    <div class=\"row\">\n      <div class=\"input-field col s12\">\n        <input id=\"input_text\" type=\"text\" formControlName=\"name\">\n        <label for=\"input_text\">Введіть назву</label>\n\n        <button type=\"submit\" class=\"light-blue darken-3 btn\">\n          <i class=\"material-icons right\">playlist_add</i>Додати\n        </button>\n      </div>\n    </div>\n  </form>\n</div>\n<div class=\"row\">\n  <div class=\"col s12\">\n    <a class=\"btn btn-success right\" (click)=\"onCloseForm()\">Закрити форму</a>\n  </div>\n</div>\n"
 
 /***/ }),
 
-/***/ 936:
+/***/ 937:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row\">\n  <form [formGroup]=\"inviteUsersForm\" (ngSubmit)=\"onSubmitForm()\">\n    <h4>Вибрати групи\n    </h4>\n    <div class=\"input-field col s6\">\n      <select materialize=\"material_select\" multiple [materializeSelectOptions]=\"allGroups\" formControlName=\"groups\" [(ngModel)]=\"selectedGroups\">\n        <option value=\"\" disabled selected>Choose your option</option>\n        <option *ngFor=\"let group of allGroups\" [ngValue]=\"group\">{{ group.name }}</option>\n      </select>\n    </div>\n    <button type=\"submit\" class=\"light-blue darken-3 btn right\" style=\"margin-top: 15px\">\n      <i class=\"material-icons right\">playlist_add</i>Додати\n    </button>\n  </form>\n</div>\n<div class=\"row\">\n  <a (click)=\"onClosePopup()\" class=\"btn btn-success right\">Закрити</a>\n</div>\n"
 
 /***/ }),
 
-/***/ 937:
+/***/ 938:
 /***/ (function(module, exports) {
 
 module.exports = "<div>\n  Щоб писати повідомлення в цій кімнаті, спочатку треба в неї вступити.\n  <a class=\"btn btn-success\" (click)=\"onJoinToRoom()\">Вступити</a>\n</div>\n"
 
 /***/ }),
 
-/***/ 938:
+/***/ 939:
 /***/ (function(module, exports) {
 
 module.exports = "<li class=\"media\">\n  <div class=\"media-body\">\n    <div class=\"media\">\n      <div class=\"media-body\" >\n        <h6>{{ member.first_name }} {{ member.last_name }}</h6>\n      </div>\n    </div>\n  </div>\n</li>\n"
 
 /***/ }),
 
-/***/ 939:
+/***/ 940:
 /***/ (function(module, exports) {
 
 module.exports = "<div *ngIf=\"!members\" class=\"preloader-area\">\n  <div class=\"preloader-wrapper small active\">\n    <div class=\"spinner-layer spinner-green-only\">\n      <div class=\"circle-clipper left\">\n        <div class=\"circle\"></div>\n      </div>\n      <div class=\"gap-patch\">\n        <div class=\"circle\"></div>\n      </div>\n      <div class=\"circle-clipper right\">\n        <div class=\"circle\"></div>\n      </div>\n    </div>\n  </div>\n</div>\n<ul class=\"media-list\">\n  <member *ngFor=\"let member of members\" [member]=\"member\"></member>\n</ul>\n"
 
 /***/ }),
 
-/***/ 940:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"panel-footer\">\n  <div class=\"input-group\">\n\n    <form [formGroup]=\"messageForm\" (ngSubmit)=\"onSend()\">\n        <div id=\"block1\" class=\"message-input\">\n          <input type=\"text\" class=\"form-control validate\" formControlName=\"message\" placeholder=\"Введіть повідомлення\" (keyup)=\"onChangeMessage()\" />\n        </div>\n        <div id=\"block2\" class=\"send-button\">\n          <button class=\"btn btn-info \" type=\"submit\" [disabled]=\"!messageForm.valid\">\n            <i class=\"material-icons\">comment</i>\n          </button>\n        </div>\n        <span class=\"input-group-btn\">\n                              </span>\n    </form>\n\n  </div>\n</div>\n\n<div materialize [materializeParams]=\"['Поле з повідомленням обовʼязкове до заповнення', 4000]\" [materializeActions]=\"sendMessageAction\"></div>\n"
-
-/***/ }),
-
 /***/ 941:
 /***/ (function(module, exports) {
 
-module.exports = "<li class=\"media\">\n  <div class=\"media-body\">\n    <div class=\"media\">\n      <!--<a class=\"pull-left\" href=\"#\">-->\n      <!--<img class=\"media-object img-circle \" src=\"../images/user.png\" />-->\n      <!--</a>-->\n      <div class=\"media-body\" >\n        {{ message.msg }}\n        <br />\n        <small class=\"text-muted\">{{ message.author.first_name }} {{ message.author.last_name }} | {{ message.created_at | date:'dd MMMM y, HH:mm:ss' }}</small>\n        <hr />\n      </div>\n    </div>\n  </div>\n</li>\n"
+module.exports = "<div class=\"panel-footer\">\n  <div class=\"input-group\">\n\n    <form [formGroup]=\"messageForm\" (ngSubmit)=\"onSend()\">\n        <div id=\"block1\" class=\"message-input\">\n          <input type=\"text\" class=\"form-control validate\" formControlName=\"message\" placeholder=\"Введіть повідомлення\" (keyup)=\"onChangeMessage()\" />\n\n          <div class=\"images\" formArrayName=\"images\">\n            <div *ngFor=\"let image of messageForm.controls.images.controls; let i=index\" class=\"image-item-container\">\n              <input type=\"text\" [formControlName]=\"i\" placeholder=\"Введіть посилання до картинки\" class=\"form-control\" style=\"display: inline-block; width: 90%;\">\n              <i class=\"material-icons\" (click)=\"onRemoveImage(i)\" style=\"display: inline-block\">remove</i>\n            </div>\n\n            <i class=\"material-icons\" (click)=\"onAddImage()\">add</i>\n          </div>\n        </div>\n        <div id=\"block2\" class=\"send-button\">\n          <button class=\"btn btn-info \" type=\"submit\" [disabled]=\"!messageForm.valid\">\n            <i class=\"material-icons\">comment</i>\n          </button>\n        </div>\n        <span class=\"input-group-btn\">\n                              </span>\n    </form>\n\n  </div>\n</div>\n\n<div materialize [materializeParams]=\"['Поле з повідомленням обовʼязкове до заповнення', 4000]\" [materializeActions]=\"sendMessageAction\"></div>\n"
 
 /***/ }),
 
 /***/ 942:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"!messages\" class=\"preloader-area\">\n  <div class=\"preloader-wrapper small active center\">\n    <div class=\"spinner-layer spinner-green-only\">\n      <div class=\"circle-clipper left\">\n        <div class=\"circle\"></div>\n      </div>\n      <div class=\"gap-patch\">\n        <div class=\"circle\"></div>\n      </div>\n      <div class=\"circle-clipper right\">\n        <div class=\"circle\"></div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div *ngIf=\"messages\">\n  <ul class=\"media-list\">\n    <message *ngFor=\"let message of messages\" [message]=\"message\"></message>\n  </ul>\n\n  <div *ngIf=\"messages.length == 0\">\n    <p>В цьому каналі ще немає ні одного повідомлення</p>\n  </div>\n</div>\n"
+module.exports = "<li class=\"media\">\n  <div class=\"media-body\">\n    <div class=\"media\">\n      <!--<a class=\"pull-left\" href=\"#\">-->\n      <!--<img class=\"media-object img-circle \" src=\"../images/user.png\" />-->\n      <!--</a>-->\n      <div class=\"media-body\" >\n        {{ message.msg }}\n        <br />\n        <div *ngIf=\"message.photos\">\n          <img *ngFor=\"let photo of message.photos | images\" src=\"{{ photo }}\" class=\"message-image\" />\n        </div>\n        <br />\n        <small class=\"text-muted\">{{ message.author.first_name }} {{ message.author.last_name }} | {{ message.created_at | date:'dd MMMM y, HH:mm:ss' }}</small>\n        <hr />\n      </div>\n    </div>\n  </div>\n</li>\n"
 
 /***/ }),
 
 /***/ 943:
 /***/ (function(module, exports) {
 
-module.exports = "<li class=\"collection-item\" (click)=\"onSelectRoom()\">\n  <div>{{ room.name }}\n    <a href=\"#\" class=\"secondary-content\">\n      <i class=\"material-icons\">room</i>\n    </a>\n  </div>\n</li>\n"
+module.exports = "<div *ngIf=\"!messages\" class=\"preloader-area\">\n  <div class=\"preloader-wrapper small active center\">\n    <div class=\"spinner-layer spinner-green-only\">\n      <div class=\"circle-clipper left\">\n        <div class=\"circle\"></div>\n      </div>\n      <div class=\"gap-patch\">\n        <div class=\"circle\"></div>\n      </div>\n      <div class=\"circle-clipper right\">\n        <div class=\"circle\"></div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div *ngIf=\"messages\">\n  <ul class=\"media-list\">\n    <message *ngFor=\"let message of messages\" [message]=\"message\"></message>\n  </ul>\n\n  <div *ngIf=\"messages.length == 0\">\n    <p>В цьому каналі ще немає ні одного повідомлення</p>\n  </div>\n</div>\n"
 
 /***/ }),
 
 /***/ 944:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <ul class=\"collection with-header\">\n    <room *ngFor=\"let room of rooms\" [room]=\"room\" (changeRoom)=\"onSelectRoom(room)\">{{ room.name }}</room>\n  </ul>\n</div>\n<div class=\"row\" *ngIf=\"isPopup\">\n  <a (click)=\"onClosePopup()\" class=\"btn btn-success right\">Закрити</a>\n</div>\n"
+module.exports = "<li class=\"collection-item\" (click)=\"onSelectRoom()\">\n  <div>{{ room.name }}\n    <a href=\"#\" class=\"secondary-content\">\n      <i class=\"material-icons\">room</i>\n    </a>\n  </div>\n</li>\n"
 
 /***/ }),
 
 /***/ 945:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n  <ul class=\"collection with-header\">\n    <room *ngFor=\"let room of rooms\" [room]=\"room\" (changeRoom)=\"onSelectRoom(room)\">{{ room.name }}</room>\n  </ul>\n</div>\n<div class=\"row\" *ngIf=\"isPopup\">\n  <a (click)=\"onClosePopup()\" class=\"btn btn-success right\">Закрити</a>\n</div>\n"
+
+/***/ }),
+
+/***/ 946:
 /***/ (function(module, exports) {
 
 module.exports = "<main-navigation></main-navigation>\n<main class=\"main-container\">\n  <div class=\"container\">\n    <div class=\"row\" *ngIf=\"user?.role == 'teacher'\">\n      <h4>Ви можете додати нову кімнату натиснувши <a (click)=\"onOpenCreateRoomForm()\">сюди</a></h4>\n    </div>\n    <div class=\"row\" *ngIf=\"rooms?.length < 1\">\n      <div class=\"col l12 m12\">\n        <h4 class=\"center\">Нажаль на даний момент немає ні одної кімнати пов'язаної з вами.</h4>\n      </div>\n    </div>\n    <div class=\"row\" *ngIf=\"rooms?.length > 0\">\n      <div class=\"col l12 m12\">\n        <div class=\"col l8 m8\" >\n          <p>Виберіть потрібну кімнату</p>\n        </div>\n        <div class=\"col l4 m4\">\n          <rooms [rooms]=\"rooms\" [isPopup]=\"false\" (selectRoom)=\"onSelectRoom($event)\"></rooms>\n        </div>\n      </div>\n    </div>\n  </div>\n</main>\n<main-footer></main-footer>\n\n<div id=\"modal2\" class=\"modal\" materialize=\"modal\" [materializeParams]=\"[{dismissible: false}]\" [materializeActions]=\"createRoomModal\">\n  <div class=\"modal-content\">\n    <app-create-room-form (createRoom)=\"onCreateRoom($event)\" (closeForm)=\"onCloseRoomForm()\"></app-create-room-form>\n  </div>\n</div>\n\n<div materialize [materializeParams]=\"['Кімната успішно створена', 4000]\" [materializeActions]=\"createRoomAction\"></div>\n"
